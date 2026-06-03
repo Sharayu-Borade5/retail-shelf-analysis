@@ -1,24 +1,32 @@
 """
-Retail Shelf Analysis Pipeline  –  entry point.
+main.py
+=======
+Retail Shelf Analysis Pipeline — Entry Point
 
 Usage
 -----
-    # Single image
-    python main.py --images images/shelf_01.jpg
+# Analyse all images in data/images/
+python main.py
 
-    # Multiple images
-    python main.py --images images/shelf_01.jpg images/shelf_02.jpg images/shelf_03.jpg
+# Analyse specific images
+python main.py --images data/images/shelf_snacks.jpg data/images/shelf_beverages.jpg
 
-    # All images in a folder
-    python main.py --images_dir images/
+# Use a custom image folder
+python main.py --images_dir path/to/folder
 
-    # GPU inference
-    python main.py --images images/shelf_01.jpg --device cuda
+# GPU mode
+python main.py --images_dir data/images/ --device cuda
 
-    # Adjust detection sensitivity
-    python main.py --images images/shelf_01.jpg --conf 0.20 --row_gap 60
+Pipeline stages
+---------------
+1. Shelf Row Segmentation   (Hough Lines → geometric fallback)
+2. Product Detection        (YOLO-World zero-shot + tiled inference)
+3. Brand Classification     (OpenCLIP zero-shot)
+4. OCR Extraction           (PaddleOCR → EasyOCR fallback)
+5. Business Metrics         (SOS, OSA)
+6. Visualization            (annotated image)
+7. JSON Output              (structured result)
 """
-
 from __future__ import annotations
 
 import argparse
@@ -27,240 +35,225 @@ import logging
 import os
 import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import List, Optional
 
 import cv2
 
-# Local modules
-import config as cfg
-from pipeline import (
-    BrandClassifier,
-    OCREngine,
-    ProductDetector,
-    ShelfSegmenter,
-    ShelfVisualizer,
-)
-
+# ── Logging ────────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
+    format="%(asctime)s  %(levelname)-8s  %(name)-25s  %(message)s",
     datefmt="%H:%M:%S",
 )
 logger = logging.getLogger("shelf_pipeline")
 
+# ── Config ─────────────────────────────────────────────────────────────────────
+sys.path.insert(0, os.path.dirname(__file__))
+from configs.config import (
+    DATA_DIR, OUTPUT_VIS_DIR, OUTPUT_RES_DIR,
+    DETECTION_CLASSES, DETECTION_CONF, DETECTION_IOU, MIN_BBOX_AREA,
+    TILE_SIZE, TILE_OVERLAP, NMS_IOU_MERGE,
+    CLIP_MODEL, CLIP_PRETRAINED, CLIP_MIN_CONF, BRAND_PROMPTS,
+    OCR_LANGUAGES, OCR_CONF,
+    CANNY_LOW, CANNY_HIGH, HOUGH_THRESHOLD, MIN_LINE_LENGTH, MAX_LINE_GAP, ROW_GAP_MIN,
+    VIS_FONT_SCALE, VIS_BOX_THICK, VIS_LEGEND_W,
+)
 
-# ── Pipeline class ─────────────────────────────────────────────────────────
+# ── Pipeline modules ────────────────────────────────────────────────────────────
+from src.detector      import ProductDetector
+from src.classifier    import BrandClassifier
+from src.ocr           import OCREngine
+from src.segmentation  import ShelfSegmenter
+from src.metrics       import compute_sos, compute_osa, generate_report
+from src.visualization import ShelfVisualizer
 
-class ShelfAnalysisPipeline:
+# Suppress third-party noise
+logging.getLogger("ultralytics").setLevel(logging.WARNING)
+logging.getLogger("easyocr").setLevel(logging.WARNING)
+logging.getLogger("ppocr").setLevel(logging.WARNING)
+
+
+class RetailShelfPipeline:
     """
-    Orchestrates detection → classification → OCR → segmentation → output.
+    End-to-end retail shelf analysis pipeline.
 
-    All sub-components use lazy initialisation so the first call is slower
-    (model loading) but subsequent calls are fast.
+    Instantiate once and call ``process()`` for each image.
+    All heavy models are loaded lazily on first use and reused across images.
     """
 
-    def __init__(
-        self,
-        conf_threshold: float = cfg.DETECTION_CONF,
-        iou_threshold: float  = cfg.DETECTION_IOU,
-        min_area: int         = cfg.MIN_BBOX_AREA,
-        row_gap: int          = cfg.SHELF_ROW_GAP,
-        device: str           = "cpu",
-        output_dir: str       = cfg.OUTPUT_DIR,
-    ) -> None:
-        self.output_dir = output_dir
-        self.row_gap    = row_gap
-        os.makedirs(output_dir, exist_ok=True)
+    def __init__(self, device: str = "cpu"):
+        self.detector   = ProductDetector(
+            conf=DETECTION_CONF,
+            iou=DETECTION_IOU,
+            min_area=MIN_BBOX_AREA,
+            tile_size=TILE_SIZE,
+            tile_overlap=TILE_OVERLAP,
+            nms_iou_merge=NMS_IOU_MERGE,
+        )
+        self.classifier = BrandClassifier(
+            brand_prompts=BRAND_PROMPTS,
+            model_name=CLIP_MODEL,
+            pretrained=CLIP_PRETRAINED,
+            min_conf=CLIP_MIN_CONF,
+            device=device,
+        )
+        self.ocr        = OCREngine(languages=OCR_LANGUAGES, min_conf=OCR_CONF)
+        self.segmenter  = ShelfSegmenter(
+            canny_low=CANNY_LOW,
+            canny_high=CANNY_HIGH,
+            hough_threshold=HOUGH_THRESHOLD,
+            min_line_length=MIN_LINE_LENGTH,
+            max_line_gap=MAX_LINE_GAP,
+            row_gap_min=ROW_GAP_MIN,
+        )
+        self.visualizer = ShelfVisualizer(
+            font_scale=VIS_FONT_SCALE,
+            box_thickness=VIS_BOX_THICK,
+            legend_width=VIS_LEGEND_W,
+        )
 
-        self.detector   = ProductDetector(conf_threshold, iou_threshold, min_area, device)
-        self.classifier = BrandClassifier(cfg.BRAND_PROMPTS, cfg.CLIP_MODEL, cfg.CLIP_PRETRAINED, device)
-        self.ocr        = OCREngine(cfg.OCR_LANGUAGES, cfg.OCR_CONF, gpu=(device != "cpu"))
-        self.segmenter  = ShelfSegmenter()
-        self.visualizer = ShelfVisualizer()
-
-    # ── public API ─────────────────────────────────────────────────────────
-
-    def run(self, image_path: str) -> Dict:
+    def process(self, image_path: str) -> dict:
         """
-        Analyse one shelf image.
+        Process a single shelf image through the full pipeline.
 
-        Returns a dictionary matching the required output schema:
-        {
-            "image_name": str,
-            "total_products": int,
-            "brands": { brand: count, ... },
-            "ocr_labels": [ str, ... ],
-            "share_of_shelf_pct": { brand: float, ... },
-            "annotated_image": str,   # path to saved annotated image
-        }
+        Parameters
+        ----------
+        image_path : str
+            Absolute or relative path to the input image.
+
+        Returns
+        -------
+        dict
+            JSON-serialisable result matching the assignment schema.
         """
-        image_name = os.path.basename(image_path)
-        logger.info("─── Processing: %s ───", image_name)
+        stem = Path(image_path).stem
+        name = Path(image_path).name
+        logger.info("─── Processing: %s ───", name)
 
-        # 1. Load image
+        # Load image
         image = cv2.imread(image_path)
         if image is None:
-            raise FileNotFoundError(f"Cannot load image: {image_path}")
-        H, W = image.shape[:2]
-        logger.info("Image size: %dx%d", W, H)
+            raise FileNotFoundError(f"Cannot read image: {image_path}")
+        logger.info("Image size: %dx%d", image.shape[1], image.shape[0])
 
-        # 2. Detect products
-        detections = self.detector.detect(image, cfg.DETECTION_CLASSES)
-        logger.info("  → %d product regions detected", len(detections))
+        # ── Step 1: Product Detection ──────────────────────────────────────
+        detections = self.detector.detect(image, DETECTION_CLASSES)
+        logger.info("→ %d product regions detected", len(detections))
 
         if not detections:
-            logger.warning("No products detected – returning empty result")
-            return self._empty_result(image_name)
+            logger.warning("No products detected in %s", name)
+            return generate_report(name, 0, [], {}, 0.0, [], 0, "", "none")
 
-        # 3. Crop detected regions and classify brands (batched for speed)
-        crops = [image[d.bbox[1]:d.bbox[3], d.bbox[0]:d.bbox[2]] for d in detections]
-        brand_results = self.classifier.classify_batch(crops)
-
-        detections_with_brands = [
-            (det, brand)
-            for det, (brand, _conf) in zip(detections, brand_results)
+        # ── Step 2: Brand Classification ───────────────────────────────────
+        crops = [
+            image[d.y1:d.y2, d.x1:d.x2]
+            for d in detections
+            if d.y2 > d.y1 and d.x2 > d.x1
         ]
+        results     = self.classifier.classify_batch(crops)
+        brands      = [r[0] for r in results]
+        confidences = [r[1] for r in results]
 
-        # 4. Shelf segmentation (group into rows, compute SOS)
-        seg_result = self.segmenter.segment(
-            detections_with_brands, W, H, self.row_gap
+        # ── Step 3: Shelf Segmentation ─────────────────────────────────────
+        seg = self.segmenter.segment(image, detections, brands)
+
+        # ── Step 4: OCR Extraction ─────────────────────────────────────────
+        ocr_labels = self.ocr.extract(image, seg.shelf_rows)
+
+        # ── Step 5: Business Metrics ───────────────────────────────────────
+        sos = compute_sos(seg.brand_areas, seg.total_area)
+
+        # ── Step 6: Visualization ──────────────────────────────────────────
+        canvas = self.visualizer.draw(
+            image, detections, brands, confidences, seg, sos, ocr_labels
+        )
+        vis_path = self.visualizer.save(canvas, OUTPUT_VIS_DIR, stem)
+        logger.info("→ annotated: %s", vis_path)
+
+        # ── Step 7: JSON Report ────────────────────────────────────────────
+        report = generate_report(
+            image_name=name,
+            detections_count=len(detections),
+            brands=brands,
+            brand_areas=seg.brand_areas,
+            total_area=seg.total_area,
+            ocr_labels=ocr_labels,
+            shelf_rows_count=len(seg.shelf_rows),
+            annotated_path=vis_path,
+            segmentation_method=seg.method,
         )
 
-        # 5. OCR on price-tag strips
-        from pipeline.segmentation import get_shelf_bands
-        bands     = get_shelf_bands(seg_result.rows)
-        ocr_texts = self.ocr.extract(image, bands if bands else None)
-
-        # 6. Aggregate brand counts
-        brand_counts: Dict[str, int] = {}
-        for _, brand in detections_with_brands:
-            brand_counts[brand] = brand_counts.get(brand, 0) + 1
-        brand_counts = dict(sorted(brand_counts.items(), key=lambda x: x[1], reverse=True))
-
-        # 7. Visualise & save annotated image
-        annotated_path = self.visualizer.annotate(
-            image,
-            detections_with_brands,
-            seg_result,
-            ocr_texts,
-            image_name,
-            self.output_dir,
-        )
-
-        result = {
-            "image_name": image_name,
-            "total_products": len(detections),
-            "brands": brand_counts,
-            "ocr_labels": ocr_texts,
-            "share_of_shelf_pct": seg_result.brand_sos_pct,
-            "shelf_rows_detected": len(seg_result.rows),
-            "annotated_image": annotated_path,
-        }
-
-        # Save JSON alongside annotated image
-        stem     = os.path.splitext(image_name)[0]
-        json_path = os.path.join(self.output_dir, f"{stem}_result.json")
-        with open(json_path, "w", encoding="utf-8") as fh:
-            json.dump(result, fh, indent=2, ensure_ascii=False)
-
+        top_brands = list(report["brands"].keys())[:5]
         logger.info(
-            "  → brands=%s | ocr_items=%d | annotated=%s",
-            list(brand_counts.keys())[:5],
-            len(ocr_texts),
-            annotated_path,
+            "→ brands=%s | ocr_items=%d | annotated=%s",
+            top_brands, len(ocr_labels), vis_path,
         )
-        return result
-
-    def run_batch(self, image_paths: List[str]) -> List[Dict]:
-        results = []
-        for path in image_paths:
-            try:
-                results.append(self.run(path))
-            except Exception as exc:
-                logger.error("Failed on %s: %s", path, exc)
-                results.append({"image_name": os.path.basename(path), "error": str(exc)})
-        return results
-
-    # ── helpers ────────────────────────────────────────────────────────────
-
-    @staticmethod
-    def _empty_result(image_name: str) -> Dict:
-        return {
-            "image_name": image_name,
-            "total_products": 0,
-            "brands": {},
-            "ocr_labels": [],
-            "share_of_shelf_pct": {},
-            "shelf_rows_detected": 0,
-            "annotated_image": None,
-        }
+        return report
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────
-
-def _parse_args():
-    p = argparse.ArgumentParser(
-        description="Retail shelf analysis: detection + brand classification + OCR + SOS"
+def _find_images(images_dir: Optional[str], images: Optional[List[str]]) -> List[str]:
+    exts = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
+    if images:
+        return [p for p in images if Path(p).suffix.lower() in exts]
+    if images_dir:
+        return sorted(
+            str(p) for p in Path(images_dir).iterdir()
+            if p.suffix.lower() in exts
+        )
+    # Default: scan data/images/
+    return sorted(
+        str(p) for p in Path(DATA_DIR).iterdir()
+        if p.suffix.lower() in exts
     )
-    group = p.add_mutually_exclusive_group(required=True)
-    group.add_argument(
-        "--images", nargs="+", metavar="FILE",
-        help="One or more shelf image paths",
-    )
-    group.add_argument(
-        "--images_dir", metavar="DIR",
-        help="Directory containing shelf images (.jpg / .png / .jpeg)",
-    )
-    p.add_argument("--output_dir", default=cfg.OUTPUT_DIR, help="Output directory")
-    p.add_argument("--device",    default="cpu",  choices=["cpu", "cuda"])
-    p.add_argument("--conf",      type=float, default=cfg.DETECTION_CONF)
-    p.add_argument("--iou",       type=float, default=cfg.DETECTION_IOU)
-    p.add_argument("--row_gap",   type=int,   default=cfg.SHELF_ROW_GAP)
-    return p.parse_args()
 
 
 def main():
-    args = _parse_args()
+    parser = argparse.ArgumentParser(description="Retail Shelf Analysis Pipeline")
+    parser.add_argument("--images",     nargs="+", help="Specific image paths")
+    parser.add_argument("--images_dir", help="Folder of images to process")
+    parser.add_argument("--device",     default="cpu", choices=["cpu", "cuda"])
+    args = parser.parse_args()
 
-    if args.images:
-        image_paths = args.images
-    else:
-        exts  = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
-        d     = Path(args.images_dir)
-        image_paths = [str(p) for p in sorted(d.iterdir()) if p.suffix.lower() in exts]
-        if not image_paths:
-            logger.error("No images found in %s", args.images_dir)
-            sys.exit(1)
+    image_paths = _find_images(args.images_dir, args.images)
+    if not image_paths:
+        logger.error("No images found. Put shelf images in data/images/ or use --images.")
+        sys.exit(1)
 
-    pipeline = ShelfAnalysisPipeline(
-        conf_threshold=args.conf,
-        iou_threshold=args.iou,
-        row_gap=args.row_gap,
-        device=args.device,
-        output_dir=args.output_dir,
-    )
+    logger.info("Found %d image(s) to process", len(image_paths))
+    pipeline = RetailShelfPipeline(device=args.device)
+    all_results = []
 
-    results = pipeline.run_batch(image_paths)
+    for path in image_paths:
+        try:
+            result = pipeline.process(path)
+            # Save individual JSON
+            json_path = os.path.join(OUTPUT_RES_DIR, Path(path).stem + "_result.json")
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(result, f, indent=2, ensure_ascii=False)
+            all_results.append(result)
+        except Exception as exc:
+            logger.error("Failed to process %s: %s", path, exc)
+            raise
 
     # Print summary table
     print("\n" + "=" * 70)
-    print(f"{'IMAGE':<30} {'PRODUCTS':>9} {'BRANDS':>8} {'OCR ITEMS':>10}")
+    print(f"{'IMAGE':<35} {'PRODUCTS':>8}  {'BRANDS':>6}  {'OCR':>5}  {'ROWS':>4}")
     print("=" * 70)
-    for r in results:
-        if "error" in r:
-            print(f"{r['image_name']:<30}  ERROR: {r['error']}")
-        else:
-            print(
-                f"{r['image_name']:<30} "
-                f"{r['total_products']:>9} "
-                f"{len(r['brands']):>8} "
-                f"{len(r['ocr_labels']):>10}"
-            )
+    for r in all_results:
+        print(
+            f"{r['image_name']:<35} {r['total_products']:>8}  "
+            f"{len(r['brands']):>6}  {len(r['ocr_labels']):>5}  "
+            f"{r['shelf_rows_detected']:>4}"
+        )
     print("=" * 70)
-    print(f"\nOutputs saved to: {args.output_dir}\n")
 
-    # Full JSON dump to stdout (can be piped / redirected)
-    print(json.dumps(results, indent=2, ensure_ascii=False))
+    # Save combined JSON
+    combined_path = os.path.join(OUTPUT_RES_DIR, "all_results.json")
+    with open(combined_path, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
+    print(f"\nOutputs saved to: {OUTPUT_VIS_DIR}  (images)")
+    print(f"                  {OUTPUT_RES_DIR}  (JSON)")
+    print(json.dumps(all_results, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

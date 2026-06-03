@@ -1,21 +1,21 @@
-# ── Core ML / CV ─────────────────────────────────────────────────────────────
-torch>=2.1.0
-torchvision>=0.16.0
-
-# Detection: YOLO-World (open-vocabulary) or standard YOLOv8 as fallback
-ultralytics>=8.2.0
-
-# Classification: CLIP (open-clip-torch is the maintained fork of openai/CLIP)
-open-clip-torch>=2.24.0
-
-# OCR: EasyOCR (pure Python, no Tesseract install required)
-easyocr>=1.7.1
-
-# ── Image processing ─────────────────────────────────────────────────────────
-opencv-python>=4.9.0
-Pillow>=10.0.0
+# Core ML / vision
+ultralytics>=8.0.0          # YOLO-World zero-shot detection
+open-clip-torch>=2.20.0     # OpenCLIP brand classification
+torch>=1.9.0
+torchvision>=0.10.0
+opencv-python>=4.7.0
 numpy>=1.24.0
+Pillow>=9.0.0
 
-# ── Utilities ────────────────────────────────────────────────────────────────
-matplotlib>=3.8.0   # optional: for matplotlib-based alternative visualisation
-tqdm>=4.66.0
+# OCR (PaddleOCR is primary; EasyOCR is automatic fallback)
+# Install PaddlePaddle first for your platform:
+#   CPU:  pip install paddlepaddle
+#   GPU:  pip install paddlepaddle-gpu
+paddlepaddle
+paddleocr>=2.7.0
+
+# EasyOCR (fallback — installed alongside or instead of PaddleOCR)
+easyocr>=1.7.0
+
+# Utilities
+tqdm>=4.65.0

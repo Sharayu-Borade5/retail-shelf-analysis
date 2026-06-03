@@ -1,133 +1,81 @@
 # Retail Shelf Analysis Pipeline
 
 An end-to-end ML inference pipeline that analyses retail shelf images and
-generates brand-wise shelf presence, product availability, and OCR insights.
+generates brand-level shelf presence, share-of-shelf, and OCR insights.
 
 ---
 
 ## Architecture
 
+```mermaid
+flowchart TD
+    A[Input Image] --> B[Shelf Segmentation\nCanny + Hough Lines]
+    A --> F[PaddleOCR\nPrice Tag Extraction]
+    B --> C[YOLO-World Detection\nZero-shot + Tiled Inference]
+    C --> D[Crop Products]
+    D --> E[OpenCLIP Classification\nBrand Similarity]
+    E --> G[Business Metrics\nSOS + OSA]
+    F --> G
+    G --> H[Visualization\noutputs/visualizations/]
+    G --> I[JSON Output\noutputs/results/]
 ```
-┌───────────────────────────────────────────────────────────────────────┐
-│                         INPUT SHELF IMAGE                             │
-└─────────────────────┬───────────────────────────────────────────────┘
-                      │
-          ┌───────────▼───────────┐
-          │   1. DETECTION        │  YOLO-World (yolov8s-worldv2.pt)
-          │   ProductDetector     │  Two-pass inference:
-          │                       │  • Full-image pass (prominent items)
-          │                       │  • Tiled pass — 640×640 patches,
-          │                       │    30% overlap (small flat packs)
-          │                       │  • Global NMS merge
-          └───────────┬───────────┘
-                      │  N bounding boxes  (x1,y1,x2,y2, conf)
-          ┌───────────▼───────────┐
-          │   2. CLASSIFICATION   │  CLIP  (ViT-B/32, OpenAI weights)
-          │   BrandClassifier     │  Zero-shot cosine similarity against
-          │                       │  brand-specific text prompts
-          └───┬───────────────────┘
-              │  (Detection, brand_name) pairs
-  ┌───────────▼───────────┐  ┌──────────────────────────────────┐
-  │  3. SEGMENTATION      │  │  4. OCR                          │
-  │  ShelfSegmenter       │  │  OCREngine  (EasyOCR)            │
-  │                       │  │                                  │
-  │  • Cluster boxes into │  │  • Crop price-tag strips at      │
-  │    shelf rows by Y    │  │    bottom of each shelf row      │
-  │  • Sum bbox widths    │  │  • Extract ₹ prices, weights,    │
-  │    per brand → SOS %  │  │    brand text                    │
-  └───────────┬───────────┘  └─────────────────┬────────────────┘
-              │                                 │
-          ┌───▼─────────────────────────────────▼───┐
-          │  • Annotated image (boxes + labels)      │
-          │  • Shelf row dividers                    │
-          │  • Brand SOS legend                      │
-          │  • OCR text strip                        │
-          │  • result JSON                           │
-          └──────────────────────────────────────────┘
-```
+
+See [`docs/architecture.md`](docs/architecture.md) for detailed data-flow diagrams.
 
 ---
 
-## Model Selection Justification
+## Project Structure
 
-### 1. Detection — YOLO-World (`yolov8s-worldv2.pt`) with Tiled Inference
-
-| Criterion        | Decision |
-|------------------|----------|
-| **Why YOLO-World** | Standard YOLOv8/COCO only recognises ~5 packaging-relevant classes (bottle, cup …). YOLO-World accepts free-text class names at inference time, so we can query for "bottle", "biscuit", "cookie", "snack" etc. without any fine-tuning. Single-word concrete nouns score highest. |
-| **Why Tiled Inference** | Large shelf images (~2700×2000 px) cause YOLO-World to miss small flat products (biscuit/cookie packs on lower rows) because they occupy < 0.5% of total image area. We apply a SAHI-style approach: slice the image into overlapping 640×640 tiles, run detection on each tile, remap coordinates back to original space, then merge with global NMS. This improved snacks detection from **23 → 67 products** in testing. |
-| **Speed**        | Full-image pass + tiled pass: ~3–5 s/image on CPU. Tile count depends on image size (typically 9–16 tiles for 2700×2000 px images). |
-| **Accuracy**     | Recall improved significantly on lower shelf rows after tiling. False positives filtered by `MIN_BBOX_AREA` and NMS with `IOU = 0.45`. |
-| **Fallback**     | If YOLO-World weights are unavailable, the code automatically falls back to `yolov8m.pt` (COCO) and keeps the `bottle` / `cup` classes. |
-
-### 2. Classification — CLIP (`ViT-B/32`, OpenAI)
-
-| Criterion        | Decision |
-|------------------|----------|
-| **Why**          | Zero-shot classification requires no labelled retail dataset.  CLIP was pretrained on 400 M image–text pairs and has seen branded FMCG packaging, making it effective for brand recognition with well-crafted text prompts. |
-| **Speed**        | ~12 ms per crop on CPU (all crops processed as one batch). |
-| **Accuracy**     | Works well when brand colours/logos are distinctive (Coca-Cola red, Pepsi blue, Lay's yellow).  Struggles with brands that look visually similar (e.g. Amul Shakti vs Amul Gold). |
-| **Alternative**  | A fine-tuned EfficientNet-B0 on a retail dataset would be more accurate but requires labelled data. CLIP is the practical zero-shot choice. |
-| **Deployment**   | ~350 MB model; runs on CPU; `open-clip-torch` is pip-installable. |
-
-### 3. OCR — EasyOCR
-
-| Criterion        | Decision |
-|------------------|----------|
-| **Why**          | EasyOCR outperforms Tesseract on natural-scene text (signage, product labels) without needing system-level installation. It handles the mixed font styles on Indian retail price tags reliably. |
-| **Speed**        | ~200–400 ms per shelf image on CPU (run once per image, not per detection). |
-| **Accuracy**     | Good on large, high-contrast text (price tags).  Degrades on small or curved text. |
-| **Deployment**   | Pure Python install; no Tesseract binary needed. |
-
-### 4. Shelf Segmentation — Geometric (no neural model)
-
-A neural segmentation model (e.g. Mask R-CNN) would add ~1 s/image latency
-with marginal benefit over a geometric approach, because shelf rows in retail
-images are nearly always horizontal bands.  Our implementation:
-
-1. Clusters detected bounding boxes by vertical centre (1-D gap algorithm).
-2. Sums bounding-box widths per brand within each row → Share of Shelf %.
-
-This is fast (< 1 ms), interpretable, and directly produces actionable SOS metrics.
-
----
-
-## CPU vs GPU Considerations
-
-| Component     | CPU time (est.) | GPU time (est.) | Notes |
-|---------------|-----------------|-----------------|-------|
-| YOLO-World (full-image) | ~30 ms | ~8 ms | Batch size 1 |
-| YOLO-World (tiled, ~12 tiles) | ~2–4 s | ~200 ms | Depends on image size |
-| CLIP          | ~15 ms/image | ~4 ms | All crops batched |
-| EasyOCR       | ~350 ms | ~80 ms | Largest bottleneck on CPU |
-| **Total**     | **~5–8 s**     | **~500 ms**     | Per image (CPU dominated by tiling) |
-
-The pipeline is **CPU-deployable** for batch/offline use cases.
-For real-time store analytics (multiple cameras), GPU is recommended.
+```
+retail_shelf_analysis/
+├── main.py                      # Pipeline entry point + CLI
+├── requirements.txt
+├── README.md
+│
+├── configs/
+│   └── config.py                # All parameters + brand prompts
+│
+├── src/
+│   ├── detector.py              # YOLO-World zero-shot detection
+│   ├── classifier.py            # OpenCLIP brand classification
+│   ├── ocr.py                   # PaddleOCR / EasyOCR extraction
+│   ├── segmentation.py          # Hough Lines shelf row detection
+│   ├── metrics.py               # SOS, OSA, report generation
+│   └── visualization.py         # Annotated image generator
+│
+├── data/
+│   └── images/                  # Input shelf images
+│
+├── outputs/
+│   ├── visualizations/          # Annotated JPEG outputs
+│   └── results/                 # JSON result files
+│
+└── docs/
+    └── architecture.md          # Mermaid architecture diagram
+```
 
 ---
 
 ## Setup
 
 ```bash
-# 1. Create and activate a virtual environment (recommended)
+# 1. Create virtual environment
 python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# Linux / macOS
-source .venv/bin/activate
+.venv\Scripts\activate          # Windows
+# source .venv/bin/activate     # Linux / macOS
 
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. (Optional) GPU support – install the CUDA-enabled torch first
-#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-#    then re-run: pip install -r requirements.txt
+# 3. (Optional) GPU support
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+pip install paddlepaddle-gpu    # GPU PaddlePaddle
 
 # 4. Model weights are downloaded automatically on first run:
-#    - YOLO-World: ~/.cache/ultralytics/
-#    - CLIP ViT-B/32: ~/.cache/huggingface/ (or open_clip cache)
-#    - EasyOCR: ~/.EasyOCR/
+#    YOLO-World  : ~/.cache/ultralytics/
+#    OpenCLIP    : ~/.cache/huggingface/ or open_clip cache
+#    PaddleOCR   : ~/.paddleocr/
+#    EasyOCR     : ~/.EasyOCR/
 ```
 
 ---
@@ -135,22 +83,23 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-# Analyse all three provided test images
-python main.py --images images/shelf_dairy.jpg images/shelf_beverages.jpg images/shelf_snacks.jpg
+# Process all images in data/images/ (default)
+python main.py
 
-# Process an entire folder
-python main.py --images_dir images/
+# Process specific images
+python main.py --images data/images/shelf_snacks.jpg data/images/shelf_beverages.jpg
+
+# Process a folder
+python main.py --images_dir data/images/
 
 # GPU mode
-python main.py --images_dir images/ --device cuda
-
-# Tune detection sensitivity (lower conf = more detections, more noise)
-python main.py --images_dir images/ --conf 0.18 --row_gap 60
+python main.py --images_dir data/images/ --device cuda
 ```
 
-Outputs are written to `outputs/`:
-- `<name>_annotated.jpg` — image with bounding boxes, labels, legend, OCR strip
-- `<name>_result.json`   — structured JSON result
+Outputs:
+- `outputs/visualizations/<name>_annotated.jpg` — annotated image
+- `outputs/results/<name>_result.json`           — structured JSON
+- `outputs/results/all_results.json`             — combined JSON
 
 ---
 
@@ -159,26 +108,91 @@ Outputs are written to `outputs/`:
 ```json
 {
   "image_name": "shelf_beverages.jpg",
-  "total_products": 47,
+  "total_products": 52,
   "brands": {
-    "Coca-Cola": 12,
+    "Coca-Cola": 10,
     "Pepsi": 8,
-    "Tropicana": 6,
-    "Amul": 5,
-    "Other": 16
+    "Real": 6,
+    "Other": 28
   },
-  "ocr_labels": ["₹50", "600 ml", "Sprite", "₹99", "1 L", "Tropicana", "₹125"],
-  "share_of_shelf_pct": {
-    "Coca-Cola": 28.4,
-    "Pepsi": 17.6,
-    "Tropicana": 13.2,
-    "Amul": 11.0,
-    "Other": 29.8
+  "share_of_shelf": {
+    "Coca-Cola": 22.4,
+    "Pepsi": 16.8,
+    "Real": 12.1,
+    "Other": 48.7
   },
+  "ocr_labels": ["₹50", "₹99", "₹125", "Tropicana", "NESTEA"],
   "shelf_rows_detected": 4,
-  "annotated_image": "outputs/shelf_beverages_annotated.jpg"
+  "segmentation_method": "hough",
+  "annotated_image": "outputs/visualizations/shelf_beverages_annotated.jpg"
 }
 ```
+
+---
+
+## Model Selection Rationale
+
+### 1. Detection — YOLO-World (`yolov8s-worldv2.pt`)
+
+| Criterion | Decision |
+|-----------|----------|
+| **Specified** | Grounding DINO |
+| **Used** | YOLO-World |
+| **Why** | Grounding DINO requires CUDA compilation on Windows which fails on CPU-only machines. YOLO-World provides identical open-vocabulary zero-shot detection via free-text class prompts (`"bottle"`, `"biscuit"`, `"snack packet"`) with a simple `pip install ultralytics`. Both models share the same paradigm: large-scale vision-language pretraining enabling detection of arbitrary object categories without fine-tuning. |
+| **Tiled Inference** | Large shelf images (1400×1100 px) cause YOLO-World to miss small flat products occupying <0.5% of image area. SAHI-style 640×640 tiling with 30% overlap improves recall from ~23 → ~55 detected snack packs. |
+| **Speed** | 3–5 s/image CPU (full-image + ~12 tiles). ~500 ms on GPU. |
+
+### 2. Classification — OpenCLIP (`ViT-B/32`, OpenAI)
+
+| Criterion | Decision |
+|-----------|----------|
+| **Why** | Zero-shot classification requires no labelled retail dataset. CLIP was pretrained on 400M image–text pairs and recognises branded FMCG packaging via descriptive text prompts. |
+| **Confidence Gate** | `CLIP_MIN_CONF = 0.22`: if the best cosine similarity is below threshold, the crop is labelled "Other". Eliminates cross-category errors (e.g. a Sprite bottle matching "ITC Dark Fantasy biscuit"). |
+| **Speed** | ~15 ms/image on CPU (all crops batched). |
+| **Alternative** | A fine-tuned EfficientNet-B0 on a retail dataset would be more accurate but requires labelled data — not available in a zero-shot setting. |
+
+### 3. OCR — PaddleOCR (primary) / EasyOCR (fallback)
+
+| Criterion | Decision |
+|-----------|----------|
+| **Why PaddleOCR** | PaddleOCR outperforms EasyOCR on small, densely-packed price tag text and handles mixed-font Indian retail labels reliably. Specified explicitly in the assignment. |
+| **Fallback** | EasyOCR is used automatically if `paddleocr` is not installed, ensuring the pipeline runs on all environments. |
+| **Noise Filter** | A 6-stage filter removes garbage tokens: length check, bare number rejection, noise-char ratio, Levenshtein brand allowlist, random-capitalisation heuristic, real-word / price pattern check. |
+| **Speed** | ~300–500 ms/image on CPU. |
+
+### 4. Shelf Segmentation — Hough Lines + Geometric Fallback
+
+| Criterion | Decision |
+|-----------|----------|
+| **Primary** | Canny edge detection → `HoughLinesP` to find horizontal shelf separator bars. Physical shelf bars are long, straight, high-contrast horizontal lines — Hough transform detects them reliably. |
+| **Fallback** | When Hough finds fewer than 2 lines (very dark images or no visible bars), Y-centres of detected bounding boxes are clustered geometrically. |
+| **Why not SAM2** | SAM2 adds ~1 s/image latency and is not needed when shelf rows are horizontal bands — a well-known image prior we can exploit cheaply. |
+
+---
+
+## CPU vs GPU
+
+| Component | CPU | GPU | Bottleneck |
+|-----------|-----|-----|------------|
+| YOLO-World (full image) | ~30 ms | ~8 ms | — |
+| YOLO-World (tiled, 12 tiles) | ~2–4 s | ~200 ms | Main CPU bottleneck |
+| OpenCLIP | ~15 ms | ~4 ms | — |
+| PaddleOCR | ~350 ms | ~80 ms | — |
+| **Total per image** | **~5–8 s** | **~500 ms** | |
+
+The pipeline is fully **CPU-deployable** for batch/offline store audits.
+For real-time multi-camera analytics, GPU is recommended.
+
+---
+
+## Accuracy vs Speed Tradeoffs
+
+| Setting | Detection Recall | Latency | Notes |
+|---------|-----------------|---------|-------|
+| Full-image only | Low (misses small packs) | Fast | Not recommended for dense shelves |
+| Tiled inference (default) | High | Moderate | Best balance |
+| Lower `DETECTION_CONF` | Higher recall, more FP | Same | Tune per shelf type |
+| Larger CLIP model (ViT-L) | Better brand accuracy | +3× slower | Use if GPU available |
 
 ---
 
@@ -186,32 +200,24 @@ Outputs are written to `outputs/`:
 
 | # | Assumption / Limitation |
 |---|------------------------|
-| 1 | **Frontal shelf images** — the pipeline assumes products face the camera. Angled or cluttered shelves reduce detection recall. |
-| 2 | **Tiled inference overhead** — the SAHI-style tiling approach significantly improves recall on lower shelves (23 → 67 products on snacks image) but increases CPU inference time to ~5–8 s/image. For real-time use cases, GPU inference or a faster detector (e.g. RT-DETR) would be preferred. |
-| 3 | **CLIP brand accuracy** — zero-shot CLIP accuracy is ~60–75% per detection on densely packed shelves. A fine-tuned classifier on labelled retail images would be materially better. |
-| 4 | **Shelf row detection** — relies on detected bounding boxes being representative of all shelf rows. If one row has no detections, its price tags may be missed by OCR. |
-| 5 | **OCR language** — configured for English (`en`). Hindi/regional text on labels will be missed; adding `hi` to `OCR_LANGUAGES` in `config.py` would extend coverage. |
-| 6 | **OCR noise** — EasyOCR occasionally produces garbled tokens on small or curved label text. A multi-stage filter (noise-char ratio, Levenshtein brand matching, case-transition detection) suppresses most noise, but some short random-letter tokens may remain. |
-| 7 | **No OSA (Out-of-Stock)** — the pipeline detects presence but does not yet identify empty shelf gaps. This can be added by analysing unexpectedly large horizontal gaps between detected boxes within a row. |
-| 8 | **YOLO-World fallback** — standard YOLOv8 (COCO fallback) only returns bottle/cup detections, significantly reducing coverage for packaged goods. Always use YOLO-World weights when possible. |
+| 1 | **Frontal shelf images** — products must face the camera. Angled or heavily occluded products reduce detection recall. |
+| 2 | **Zero-shot CLIP accuracy ~60–75%** — brands with visually similar packaging (Amul Shakti vs Amul Gold) may be confused. A fine-tuned classifier would improve accuracy significantly. |
+| 3 | **Tiled inference overhead** — SAHI-style tiling adds 2–4 s/image on CPU. For real-time use, GPU inference or a faster detector (RT-DETR) is preferred. |
+| 4 | **OCR language** — configured for English only. Adding `"hi"` to `OCR_LANGUAGES` in `configs/config.py` extends to Hindi. |
+| 5 | **OCR noise** — EasyOCR/PaddleOCR occasionally produces garbled tokens on small or curved labels. The 6-stage filter removes most noise but some short random-letter tokens may remain. |
+| 6 | **Prototype OSA** — On-Shelf Availability is approximated as product count per brand. True OSA requires a planogram to identify expected vs actual product positions. |
+| 7 | **YOLO-World fallback model** — if YOLO-World weights fail to download, `yolov8m.pt` (COCO) is used as fallback; this only detects `bottle` and `cup` classes, severely reducing coverage. |
 
 ---
 
-## Project Structure
+## Future Improvements
 
-```
-retail_shelf_analysis/
-├── pipeline/
-│   ├── __init__.py
-│   ├── detector.py        # YOLO-World product detection
-│   ├── classifier.py      # CLIP zero-shot brand classification
-│   ├── ocr_engine.py      # EasyOCR price tag extraction
-│   ├── segmentation.py    # Shelf row clustering + SOS computation
-│   └── visualizer.py      # Annotated image generation
-├── main.py                # CLI entry point + ShelfAnalysisPipeline
-├── config.py              # Brand prompts, thresholds, paths
-├── requirements.txt
-├── README.md
-├── images/                # Place input shelf images here
-└── outputs/               # Annotated images + JSON results (auto-created)
-```
+| Enhancement | Impact |
+|-------------|--------|
+| Fine-tuned detector on retail data | +15–25% detection recall |
+| Planogram compliance check | True OSA, out-of-stock detection |
+| SAM2 instance segmentation | Pixel-precise SOS calculation |
+| Product SKU recognition | SKU-level inventory tracking |
+| Tracking across store visits | Trend analysis, replenishment alerts |
+| Hindi / regional OCR | Better coverage of Indian price tags |
+| Grounding DINO (when GPU available) | Phrase-grounded detection |
