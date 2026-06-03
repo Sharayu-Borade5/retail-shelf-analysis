@@ -1,0 +1,21 @@
+# ── Core ML / CV ─────────────────────────────────────────────────────────────
+torch>=2.1.0
+torchvision>=0.16.0
+
+# Detection: YOLO-World (open-vocabulary) or standard YOLOv8 as fallback
+ultralytics>=8.2.0
+
+# Classification: CLIP (open-clip-torch is the maintained fork of openai/CLIP)
+open-clip-torch>=2.24.0
+
+# OCR: EasyOCR (pure Python, no Tesseract install required)
+easyocr>=1.7.1
+
+# ── Image processing ─────────────────────────────────────────────────────────
+opencv-python>=4.9.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+matplotlib>=3.8.0   # optional: for matplotlib-based alternative visualisation
+tqdm>=4.66.0

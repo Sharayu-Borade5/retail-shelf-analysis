@@ -1,0 +1,53 @@
+{
+  "image_name": "shelf_snacks.jpg",
+  "total_products": 45,
+  "brands": {
+    "Lays": 5,
+    "Doritos": 3,
+    "Cheetos": 2,
+    "Kurkure": 3,
+    "Uncle Chipps": 2,
+    "Bingo": 4,
+    "Pringles": 3,
+    "Parle": 5,
+    "Britannia": 8,
+    "Oreo": 2,
+    "ITC Snacks": 4,
+    "Malkist": 4
+  },
+  "ocr_labels": [
+    "₹20 LAY'S 52.5g",
+    "₹28 DORITOS 44g",
+    "₹20 CHEETOS 35g",
+    "₹20 KURKURE 60g",
+    "₹20 UNCLE CHIPPS 60g",
+    "₹20 BINGO! 52g",
+    "₹99 PRINGLES 107g",
+    "₹10 MONACO 63g",
+    "₹10 PARLE-G 80g",
+    "₹20 GOOD DAY 81g",
+    "₹20 MARIE GOLD 120g",
+    "₹20 OREO 120g",
+    "₹10 TIGER KRUNCH 60g",
+    "₹20 HIDE & SEEK FAB 112g",
+    "₹30 HIDE & SEEK MILANO 75g",
+    "₹30 DARK FANTASY 75g",
+    "₹10 MALKIST 65g"
+  ],
+  "share_of_shelf_pct": {
+    "Britannia": 22.2,
+    "Parle": 13.9,
+    "Lays": 13.9,
+    "Bingo": 11.1,
+    "ITC Snacks": 11.1,
+    "Malkist": 11.1,
+    "Kurkure": 8.3,
+    "Pringles": 8.3,
+    "Doritos": 8.3,
+    "Uncle Chipps": 5.6,
+    "Cheetos": 5.6,
+    "Oreo": 5.6
+  },
+  "shelf_rows_detected": 4,
+  "annotated_image": "outputs\\shelf_snacks_annotated.jpg"
+}
