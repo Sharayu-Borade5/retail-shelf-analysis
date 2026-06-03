@@ -5,14 +5,26 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # ── Detection ────────────────────────────────────────────────────────────────
-# YOLO-World open-vocabulary classes for retail shelf items
+# YOLO-World open-vocabulary classes.
+# IMPORTANT: Keep classes as short, concrete nouns — multi-word phrases score
+# lower with YOLO-World than single-word category names.
 DETECTION_CLASSES = [
-    "bottle", "can", "carton", "bag", "packet",
-    "box", "cup", "container", "jar"
+    # Generic containers
+    "bottle", "can", "carton", "bag", "packet", "box", "cup", "container", "jar",
+    # Snack-specific (single-word; YOLO-World handles these well)
+    "biscuit", "cracker", "cookie", "wafer", "chips", "snack",
+    # Broader fallbacks
+    "food package", "product",
 ]
-DETECTION_CONF = 0.20
+DETECTION_CONF = 0.12   # low; tile-level NMS removes duplicates
 DETECTION_IOU  = 0.45
-MIN_BBOX_AREA  = 800   # px² – filters tiny noise detections
+MIN_BBOX_AREA  = 300    # tiles are smaller so raw pixel areas are smaller
+
+# ── Tiled inference (SAHI-style) ─────────────────────────────────────────────
+# Tiles the image into overlapping 640×640 patches so small flat packs that
+# YOLO-World misses at full resolution become visible at tile scale.
+TILE_SIZE    = 640
+TILE_OVERLAP = 0.30   # 30% overlap between adjacent tiles
 
 # ── Classification (CLIP) ────────────────────────────────────────────────────
 CLIP_MODEL      = "ViT-B/32"
@@ -215,7 +227,7 @@ BRAND_PROMPTS: dict[str, list[str]] = {
 
 # ── OCR ─────────────────────────────────────────────────────────────────────
 OCR_LANGUAGES   = ["en"]
-OCR_CONF        = 0.35
+OCR_CONF        = 0.45   # raised from 0.35 to suppress low-confidence junk
 # Price-tag rows tend to sit in the bottom 18% of each shelf band
 PRICE_ROW_FRAC  = 0.18
 
