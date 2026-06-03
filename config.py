@@ -15,7 +15,7 @@ DETECTION_IOU  = 0.45
 MIN_BBOX_AREA  = 800   # px² – filters tiny noise detections
 
 # ── Classification (CLIP) ────────────────────────────────────────────────────
-CLIP_MODEL      = "ViT-B-32"
+CLIP_MODEL      = "ViT-B/32"
 CLIP_PRETRAINED = "openai"
 
 # Each brand maps to a list of descriptive text prompts.

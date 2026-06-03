@@ -20,7 +20,10 @@ import logging
 import re
 from typing import List
 
+import ssl
 import numpy as np
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 from config import OCR_CONF, OCR_LANGUAGES, PRICE_ROW_FRAC
 
