@@ -19,16 +19,69 @@ from __future__ import annotations
 
 import logging
 import ssl
-from typing import Dict, List, Tuple
+import re
+from typing import Dict, List, Tuple, Optional
 
 import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
 
-ssl._create_default_https_context = ssl._create_unverified_context
+from configs.config import BRAND_DICTIONARY
+from rapidfuzz import fuzz
 
+ssl._create_default_https_context = ssl._create_unverified_context
 logger = logging.getLogger(__name__)
+
+
+def clean_str(s: str) -> str:
+    return re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+
+
+def match_ocr_to_brand(
+    ocr_pairs: List[Tuple[str, float]], 
+    brand_dict: Dict[str, str],
+    allowed_brands: Optional[List[str]] = None
+) -> Optional[str]:
+    """Helper to match OCR text detected on crops to a SKU using rapidfuzz fuzz.ratio on cleaned strings.
+    Only considers OCR candidates with confidence > 0.65 (Fix 4).
+    """
+    from configs.config import SKU_TO_PARENT_BRAND
+    
+    # Filter dictionary choices if allowed_brands is specified
+    active_brand_dict = brand_dict
+    if allowed_brands is not None:
+        active_brand_dict = {
+            k: v for k, v in brand_dict.items()
+            if SKU_TO_PARENT_BRAND.get(v, v) in allowed_brands
+        }
+        
+    if not active_brand_dict:
+        return None
+        
+    # Map cleaned choices to original keys
+    cleaned_choices = {clean_str(k): k for k in active_brand_dict.keys()}
+    
+    for text, conf in ocr_pairs:
+        if conf <= 0.65:
+            continue
+        cleaned_query = clean_str(text)
+        if not cleaned_query:
+            continue
+            
+        # Match using fuzz.ratio scorer
+        best_key = None
+        best_score = 0.0
+        for cleaned_choice in cleaned_choices.keys():
+            score = fuzz.ratio(cleaned_query, cleaned_choice)
+            if score > best_score:
+                best_score = score
+                best_key = cleaned_choices[cleaned_choice]
+                
+        if best_score > 75.0:
+            return active_brand_dict[best_key]
+            
+    return None
 
 
 class BrandClassifier:
@@ -57,12 +110,14 @@ class BrandClassifier:
         pretrained: str = "openai",
         min_conf: float = 0.22,
         device: str = "cpu",
+        ocr_engine: Optional[object] = None,
     ):
         self.brand_prompts = brand_prompts
         self.model_name    = model_name
         self.pretrained    = pretrained
         self.min_conf      = min_conf
         self.device        = device
+        self.ocr_engine    = ocr_engine
         self._model        = None
         self._preprocess   = None
         self._text_embs    = None
@@ -105,6 +160,15 @@ class BrandClassifier:
 
     def classify(self, crop_bgr: np.ndarray) -> Tuple[str, float]:
         """Classify a single BGR crop. Returns (brand_name, confidence)."""
+        if self.ocr_engine is not None and crop_bgr.size > 0:
+            try:
+                ocr_pairs = self.ocr_engine._raw_texts(crop_bgr)
+                matched_brand = match_ocr_to_brand(ocr_pairs, BRAND_DICTIONARY)
+                if matched_brand:
+                    return matched_brand, 1.0
+            except Exception as e:
+                logger.warning("OCR classification fallback to CLIP due to error: %s", e)
+
         self._load()
         import cv2
         rgb = cv2.cvtColor(crop_bgr, cv2.COLOR_BGR2RGB)
@@ -120,30 +184,85 @@ class BrandClassifier:
             return "Other", best_conf
         return self._brand_names[best_idx], best_conf
 
-    def classify_batch(self, crops_bgr: List[np.ndarray]) -> List[Tuple[str, float]]:
-        """Classify a batch of BGR crops. Returns list of (brand_name, confidence)."""
+    def classify_batch(
+        self,
+        crops_bgr: List[np.ndarray],
+        allowed_brands: Optional[List[str]] = None
+    ) -> Tuple[List[Tuple[str, float]], List[List[str]]]:
+        """Classify a batch of BGR crops with optional category restrictions.
+        
+        Returns:
+            - List of (brand_name, confidence)
+            - List of lists of OCR texts detected on each crop
+        """
         self._load()
         if not crops_bgr:
-            return []
-        import cv2
-        tensors = []
-        for crop in crops_bgr:
-            rgb = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
-            tensors.append(self._preprocess(Image.fromarray(rgb)))
+            return [], []
 
-        batch = torch.stack(tensors, dim=0).to(self.device)
-        with torch.no_grad():
-            img_embs = self._model.encode_image(batch).float()
-            img_embs = F.normalize(img_embs, dim=-1)
+        results: List[Optional[Tuple[str, float]]] = [None] * len(crops_bgr)
+        all_crop_texts: List[List[str]] = [[] for _ in crops_bgr]
+        clip_indices: List[int] = []
 
-        sims       = img_embs @ self._text_embs.T
-        best_idxs  = sims.argmax(dim=1).tolist()
-        best_confs = sims.max(dim=1).values.tolist()
+        # 1. OCR-first pass
+        for idx, crop in enumerate(crops_bgr):
+            if self.ocr_engine is not None and crop.size > 0:
+                try:
+                    ocr_pairs = self.ocr_engine._raw_texts(crop)
+                    texts = [p[0] for p in ocr_pairs]
+                    all_crop_texts[idx] = texts
+                    
+                    matched_brand = match_ocr_to_brand(ocr_pairs, BRAND_DICTIONARY, allowed_brands)
+                    if matched_brand:
+                        results[idx] = (matched_brand, 1.0)
+                        logger.info("OCR match: Crop %d -> %s", idx, matched_brand)
+                except Exception as e:
+                    logger.warning("OCR on crop %d failed: %s", idx, e)
+            
+            if results[idx] is None:
+                clip_indices.append(idx)
 
-        results: List[Tuple[str, float]] = []
-        for idx, conf in zip(best_idxs, best_confs):
-            if float(conf) < self.min_conf:
-                results.append(("Other", float(conf)))
-            else:
-                results.append((self._brand_names[idx], float(conf)))
-        return results
+        # 2. CLIP Fallback for unmatched crops
+        if clip_indices:
+            fallback_crops = [crops_bgr[i] for i in clip_indices]
+            import cv2
+            tensors = []
+            for crop in fallback_crops:
+                rgb = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
+                tensors.append(self._preprocess(Image.fromarray(rgb)))
+
+            batch = torch.stack(tensors, dim=0).to(self.device)
+            with torch.no_grad():
+                img_embs = self._model.encode_image(batch).float()
+                img_embs = F.normalize(img_embs, dim=-1)
+
+            # Filter categories for CLIP classification according to allowed_brands
+            from configs.config import SKU_TO_PARENT_BRAND
+            brand_names = self._brand_names
+            text_embs = self._text_embs
+            
+            if allowed_brands is not None:
+                indices = [
+                    i for i, b in enumerate(self._brand_names)
+                    if SKU_TO_PARENT_BRAND.get(b, b) in allowed_brands
+                ]
+                if indices:
+                    brand_names = [self._brand_names[i] for i in indices]
+                    text_embs = self._text_embs[indices]
+                else:
+                    logger.warning("No allowed brands found in BRAND_PROMPTS. Defaulting to all.")
+
+            sims       = img_embs @ text_embs.T
+            best_idxs  = sims.argmax(dim=1).tolist()
+            best_confs = sims.max(dim=1).values.tolist()
+
+            for i, idx in enumerate(clip_indices):
+                conf = float(best_confs[i])
+                brand = brand_names[best_idxs[i]]
+                if conf < self.min_conf:
+                    results[idx] = ("Other", conf)
+                else:
+                    results[idx] = (brand, conf)
+                logger.info("CLIP fallback: Crop %d -> %s (conf: %.3f)", idx, results[idx][0], conf)
+
+        final_results = [r if r is not None else ("Other", 0.0) for r in results]
+        return final_results, all_crop_texts

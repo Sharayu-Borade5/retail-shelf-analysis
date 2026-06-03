@@ -1,62 +1,520 @@
 {
   "image_name": "shelf_dairy.jpg",
-  "total_products": 63,
+  "total_products": 61,
   "brands": {
-    "Amul": 17,
-    "Danone": 11,
-    "Amul Kool": 5,
-    "Mother Dairy": 4,
-    "Epigamia": 3,
-    "Parle": 3,
+    "Amul": 23,
+    "Hershey's": 8,
+    "Actimel": 5,
+    "Go Cheese Slices": 4,
+    "Amul Kool": 3,
     "Yakult": 3,
-    "Hersheys": 3,
-    "Pringles": 3,
-    "ITC Dark Fantasy": 2,
-    "Lipton": 2,
-    "Pepsi": 2,
-    "Britannia": 2,
-    "Britannia Dairy": 1,
-    "Coca-Cola": 1,
-    "Milky Mist": 1
+    "Nestle A Dahi": 3,
+    "Nestle": 2,
+    "Amul Lite": 2,
+    "Amul Cheese Spread": 2,
+    "Amul Taaza": 1,
+    "Amul Pro": 1,
+    "Milky Mist Mozzarella": 1,
+    "Milky Mist": 1,
+    "Milky Mist Butter": 1,
+    "Activia": 1
+  },
+  "brand_counts": {
+    "Amul": 23,
+    "Hershey's": 8,
+    "Actimel": 5,
+    "Go Cheese Slices": 4,
+    "Amul Kool": 3,
+    "Yakult": 3,
+    "Nestle A Dahi": 3,
+    "Nestle": 2,
+    "Amul Lite": 2,
+    "Amul Cheese Spread": 2,
+    "Amul Taaza": 1,
+    "Amul Pro": 1,
+    "Milky Mist Mozzarella": 1,
+    "Milky Mist": 1,
+    "Milky Mist Butter": 1,
+    "Activia": 1
   },
   "share_of_shelf": {
-    "Amul": 39.05,
-    "Danone": 18.56,
-    "Amul Kool": 10.34,
-    "Mother Dairy": 8.53,
-    "Epigamia": 6.67,
-    "Yakult": 5.01,
-    "Hersheys": 3.35,
-    "Parle": 1.64,
-    "Pringles": 1.49,
-    "ITC Dark Fantasy": 1.42,
-    "Lipton": 1.32,
-    "Pepsi": 0.67,
-    "Milky Mist": 0.65,
-    "Coca-Cola": 0.53,
-    "Britannia": 0.52,
-    "Britannia Dairy": 0.26
+    "Amul": 50.58,
+    "Hershey's": 9.28,
+    "Go Cheese Slices": 8.2,
+    "Nestle": 7.81,
+    "Amul Kool": 6.7,
+    "Actimel": 6.46,
+    "Milky Mist": 4.54,
+    "Yakult": 3.89,
+    "Amul Pro Milk": 1.68,
+    "Activia": 0.87
   },
-  "ocr_labels": [
-    "AcTiviA",
-    "Actirel",
-    "Actimel",
-    "Yakuld",
-    "RESILE",
-    "YOGHURT",
-    "Amul",
-    "Taazo",
-    "MOTHER",
-    "DAIRY",
-    "SHAKTI",
-    "Tened",
-    "Anul",
-    "Aiul",
-    "ROYALE",
-    "GantcL GIERRS",
-    "BUTTER"
+  "ocr_price_tags": [
+    "₹20",
+    "₹25",
+    "₹28",
+    "₹30",
+    "₹35",
+    "₹40",
+    "₹45",
+    "₹52",
+    "₹54",
+    "₹55",
+    "₹58",
+    "₹60",
+    "₹62",
+    "₹70",
+    "₹85",
+    "₹120",
+    "₹130",
+    "₹140"
   ],
-  "shelf_rows_detected": 8,
+  "products": [
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Go Cheese Slices",
+      "sku": "Go Cheese Slices",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul Kool",
+      "sku": "Amul Kool",
+      "confidence": 0.2958019971847534
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Go Cheese Slices",
+      "sku": "Go Cheese Slices",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul Kool",
+      "sku": "Amul Kool",
+      "confidence": 0.3566740155220032
+    },
+    {
+      "brand": "Amul Kool",
+      "sku": "Amul Kool",
+      "confidence": 0.27878105640411377
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.2588682770729065
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul Taaza",
+      "confidence": 0.2998547852039337
+    },
+    {
+      "brand": "Actimel",
+      "sku": "Actimel",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.26855775713920593
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.2838243544101715
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.26163771748542786
+    },
+    {
+      "brand": "Amul Pro Milk",
+      "sku": "Amul Pro Milk",
+      "confidence": 0.39899373054504395
+    },
+    {
+      "brand": "Actimel",
+      "sku": "Actimel",
+      "confidence": 0.3181173801422119
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Actimel",
+      "sku": "Actimel",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Yakult",
+      "sku": "Yakult",
+      "confidence": 0.36582621932029724
+    },
+    {
+      "brand": "Nestle",
+      "sku": "Nestle",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Actimel",
+      "sku": "Actimel",
+      "confidence": 0.32376277446746826
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.25027164816856384
+    },
+    {
+      "brand": "Yakult",
+      "sku": "Yakult",
+      "confidence": 0.3512893319129944
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.3187127709388733
+    },
+    {
+      "brand": "Yakult",
+      "sku": "Yakult",
+      "confidence": 0.36170676350593567
+    },
+    {
+      "brand": "Actimel",
+      "sku": "Actimel",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Milky Mist",
+      "sku": "Milky Mist Mozzarella",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.30704444646835327
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul Lite Butter",
+      "confidence": 0.28899627923965454
+    },
+    {
+      "brand": "Nestle",
+      "sku": "Nestle A Dahi",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul Lite Butter",
+      "confidence": 0.3912980556488037
+    },
+    {
+      "brand": "Nestle",
+      "sku": "Nestle",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Go Cheese Slices",
+      "sku": "Go Cheese Slices",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul Cheese Spread",
+      "confidence": 0.3789491653442383
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Go Cheese Slices",
+      "sku": "Go Cheese Slices",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Hershey's",
+      "sku": "Hershey's",
+      "confidence": 0.23161908984184265
+    },
+    {
+      "brand": "Milky Mist",
+      "sku": "Milky Mist",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul Cheese Spread",
+      "confidence": 0.3703949451446533
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Milky Mist",
+      "sku": "Milky Mist Butter",
+      "confidence": 0.37570226192474365
+    },
+    {
+      "brand": "Amul",
+      "sku": "Amul",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Nestle",
+      "sku": "Nestle A Dahi",
+      "confidence": 0.26203370094299316
+    },
+    {
+      "brand": "Nestle",
+      "sku": "Nestle A Dahi",
+      "confidence": 0.2898770272731781
+    },
+    {
+      "brand": "Activia",
+      "sku": "Activia",
+      "confidence": 1.0
+    }
+  ],
+  "product_text": [
+    "\"Toret",
+    "#",
+    "#Dlcrta",
+    "(4",
+    "05253",
+    "1",
+    "2177",
+    "27\"\"",
+    "6",
+    "6S :",
+    "7",
+    "8",
+    "8d7",
+    "94i65",
+    "95",
+    "ACTIVIA",
+    "Aat",
+    "Acnail",
+    "Actimel",
+    "Actirel",
+    "Aenn",
+    "Aepouqazi",
+    "Amul",
+    "Amul `",
+    "Amul'",
+    "Anul",
+    "BUTTER",
+    "CHEESE",
+    "Cett",
+    "ChEESE SPREAB",
+    "ChceuML",
+    "Cheese",
+    "Cidtt",
+    "Cned",
+    "DAHI",
+    "DAIRY",
+    "DCrItAc",
+    "Daetml",
+    "DiURY",
+    "Dlt",
+    "Dmoht",
+    "E",
+    "Emvr",
+    "Epigamia",
+    "Faaenee",
+    "Fkufe",
+    "Foltu$ #uce",
+    "Fraa",
+    "GO",
+    "GOLD",
+    "GantcL GIERRS",
+    "Gettamic",
+    "Heaao",
+    "IEs $ TUR{",
+    "Ialhre",
+    "Ibned",
+    "Ionuti",
+    "Jere",
+    "Jo",
+    "Jul CIEEEIS",
+    "KQOL",
+    "KQoL",
+    "KqoL",
+    "Kqol",
+    "Latrnunge",
+    "Lite",
+    "Ltw",
+    "MMOTHER",
+    "MOTHER",
+    "MOZZARELLA",
+    "Mad",
+    "Mcnn",
+    "Milkshist",
+    "MilkyMist",
+    "Milkyntist",
+    "Nebtle",
+    "Nesite",
+    "Neste",
+    "PIZZA",
+    "PRO",
+    "Qaaza",
+    "ROYALE",
+    "Roccce",
+    "Runtrna",
+    "SHAKTI",
+    "SliceS",
+    "Taazo",
+    "Tened",
+    "Uaatn",
+    "Vacmc",
+    "Vacutt",
+    "Yakuld",
+    "Yakull",
+    "Yakull,",
+    "[4",
+    "]",
+    "aua",
+    "canntd",
+    "ccoco",
+    "chcese SPAEAB",
+    "cheese",
+    "cnllea",
+    "cronct",
+    "dhrre",
+    "dreh",
+    "endnti",
+    "muar",
+    "nunnotnt",
+    "olin",
+    "p",
+    "pantae"
+  ],
+  "price_text": [
+    "25",
+    "30",
+    "28",
+    "20",
+    "YOGHURT",
+    "62",
+    "54",
+    "60",
+    "45",
+    "Amul",
+    "40",
+    "35",
+    "AMULROYALE",
+    "GantcL GIERRS",
+    "BUTTER",
+    "58",
+    "52",
+    "55",
+    "70",
+    "140",
+    "120",
+    "85",
+    "130"
+  ],
+  "shelf_rows_detected": 5,
   "segmentation_method": "hough",
   "annotated_image": "C:\\Users\\Sharayu\\retail_shelf_analysis\\outputs\\visualizations\\shelf_dairy_annotated.jpg"
 }

@@ -92,29 +92,61 @@ class ShelfVisualizer:
     def _draw_legend(
         self,
         canvas: np.ndarray,
+        brand_counts: Dict[str, int],
         sos: Dict[str, float],
+        ocr_price_tags: List[str],
         img_h: int,
     ) -> np.ndarray:
-        """Append a SOS legend panel on the right side."""
+        """Append a Brand Counts, Share of Shelf, and OCR Price Tags panel on the right side."""
         panel = np.zeros((img_h, self.legend_width, 3), dtype=np.uint8)
         panel[:] = (30, 30, 30)
 
         font   = cv2.FONT_HERSHEY_SIMPLEX
-        fs     = 0.38
         th     = 1
-        header = "Brand  SOS %"
-        cv2.putText(panel, header, (8, 18), font, 0.42, (220, 220, 220), 1, cv2.LINE_AA)
-        cv2.line(panel, (4, 22), (self.legend_width - 4, 22), (80, 80, 80), 1)
 
-        y = 40
-        for brand, pct in sos.items():
-            if y > img_h - 10:
+        y = 20
+        # 1. Section: Brand Counts
+        cv2.putText(panel, "BRAND COUNTS (OSA)", (8, y), font, 0.45, (0, 220, 255), 1, cv2.LINE_AA)
+        cv2.line(panel, (4, y + 5), (self.legend_width - 4, y + 5), (80, 80, 80), 1)
+        y += 22
+
+        for brand, count in brand_counts.items():
+            if y > img_h - 40:
                 break
             color = self._brand_color(brand)
             cv2.rectangle(panel, (6, y - 8), (18, y + 2), color, -1)
-            label = f"{brand}: {pct}%"
-            cv2.putText(panel, label, (22, y), font, fs, (200, 200, 200), th, cv2.LINE_AA)
+            label = f"{brand}: {count}"
+            cv2.putText(panel, label, (22, y), font, 0.38, (200, 200, 200), th, cv2.LINE_AA)
             y += 16
+
+        # 2. Section: Share of Shelf
+        y += 15
+        if y < img_h - 40:
+            cv2.putText(panel, "SHARE OF SHELF (SOS)", (8, y), font, 0.45, (0, 220, 255), 1, cv2.LINE_AA)
+            cv2.line(panel, (4, y + 5), (self.legend_width - 4, y + 5), (80, 80, 80), 1)
+            y += 22
+
+            for brand, pct in sos.items():
+                if y > img_h - 40:
+                    break
+                color = self._brand_color(brand)
+                cv2.rectangle(panel, (6, y - 8), (18, y + 2), color, -1)
+                label = f"{brand}: {pct:.1f}%"
+                cv2.putText(panel, label, (22, y), font, 0.38, (200, 200, 200), th, cv2.LINE_AA)
+                y += 16
+
+        # 3. Section: Price Tags
+        y += 15
+        if y < img_h - 40:
+            cv2.putText(panel, "OCR PRICE TAGS", (8, y), font, 0.45, (0, 220, 255), 1, cv2.LINE_AA)
+            cv2.line(panel, (4, y + 5), (self.legend_width - 4, y + 5), (80, 80, 80), 1)
+            y += 22
+
+            for price in ocr_price_tags[:15]:
+                if y > img_h - 20:
+                    break
+                cv2.putText(panel, f"• {price}", (10, y), font, 0.38, (0, 255, 180), th, cv2.LINE_AA)
+                y += 16
 
         return np.hstack([canvas, panel])
 
@@ -128,7 +160,7 @@ class ShelfVisualizer:
         img_w   = canvas.shape[1]
         strip   = np.zeros((strip_height, img_w, 3), dtype=np.uint8)
         strip[:] = (20, 20, 20)
-        text = "OCR: " + " | ".join(ocr_labels[:30])  # cap at 30 items
+        text = "OCR Labels: " + " | ".join(ocr_labels[:30])  # cap at 30 items
         cv2.putText(strip, text, (6, 18), cv2.FONT_HERSHEY_SIMPLEX,
                     0.38, (0, 220, 180), 1, cv2.LINE_AA)
         return np.vstack([canvas, strip])
@@ -141,7 +173,8 @@ class ShelfVisualizer:
         confidences: List[float],
         seg_result: SegmentationResult,
         sos: Dict[str, float],
-        ocr_labels: List[str],
+        ocr_price_tags: List[str],
+        skus: List[str],
     ) -> np.ndarray:
         """
         Produce an annotated copy of the shelf image.
@@ -156,8 +189,10 @@ class ShelfVisualizer:
             Shelf row bands.
         sos : dict[str, float]
             Share-of-shelf percentages (for legend).
-        ocr_labels : list[str]
-            OCR text items (for bottom strip).
+        ocr_price_tags : list[str]
+            Price tags (for legend and bottom strip).
+        skus : list[str]
+            SKU names for legend counts.
 
         Returns
         -------
@@ -175,15 +210,23 @@ class ShelfVisualizer:
         for det, brand, conf in zip(detections, brands, confidences):
             color = self._brand_color(brand)
             cv2.rectangle(canvas, (det.x1, det.y1), (det.x2, det.y2), color, self.box_thickness)
-            label = f"{brand} {int(conf * 100)}%"
+            label = f"{brand}"
             self._draw_label(canvas, label, det.x1, max(det.y1 - 2, 12), color)
 
+        # ── SKU Counts computation for the legend
+        from configs.config import SKU_TO_DISPLAY_BRAND
+        sku_counts = {}
+        for s in skus:
+            disp = SKU_TO_DISPLAY_BRAND.get(s, s)
+            sku_counts[disp] = sku_counts.get(disp, 0) + 1
+        sku_counts = dict(sorted(sku_counts.items(), key=lambda x: x[1], reverse=True))
+
         # ── Legend ─────────────────────────────────────────────────────────
-        canvas = self._draw_legend(canvas, sos, img_h)
+        canvas = self._draw_legend(canvas, sku_counts, sos, ocr_price_tags, img_h)
 
         # ── OCR strip ──────────────────────────────────────────────────────
-        if ocr_labels:
-            canvas = self._draw_ocr_strip(canvas, ocr_labels)
+        if ocr_price_tags:
+            canvas = self._draw_ocr_strip(canvas, ocr_price_tags)
 
         return canvas
 

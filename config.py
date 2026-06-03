@@ -18,17 +18,23 @@ DETECTION_CLASSES = [
 ]
 DETECTION_CONF = 0.12   # low; tile-level NMS removes duplicates
 DETECTION_IOU  = 0.45
-MIN_BBOX_AREA  = 300    # tiles are smaller so raw pixel areas are smaller
+MIN_BBOX_AREA  = 500    # raised back — small detections are mostly false positives
 
 # ── Tiled inference (SAHI-style) ─────────────────────────────────────────────
 # Tiles the image into overlapping 640×640 patches so small flat packs that
 # YOLO-World misses at full resolution become visible at tile scale.
-TILE_SIZE    = 640
-TILE_OVERLAP = 0.30   # 30% overlap between adjacent tiles
+TILE_SIZE       = 640
+TILE_OVERLAP    = 0.30   # 30% overlap between adjacent tiles
+NMS_IOU_MERGE   = 0.25   # more aggressive than per-model IOU — suppresses
+                          # near-duplicate boxes from overlapping tile passes
 
 # ── Classification (CLIP) ────────────────────────────────────────────────────
 CLIP_MODEL      = "ViT-B/32"
 CLIP_PRETRAINED = "openai"
+# Minimum cosine similarity to accept a brand prediction.
+# Below this threshold the crop is labelled 'Other' to avoid cross-category
+# misclassification (e.g. CLIP picking 'Sprite' for a Bingo chip bag).
+CLIP_MIN_CONF   = 0.22
 
 # Each brand maps to a list of descriptive text prompts.
 # CLIP selects the brand whose average prompt similarity is highest.

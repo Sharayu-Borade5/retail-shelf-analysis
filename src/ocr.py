@@ -106,9 +106,18 @@ def _is_useful(text: str) -> bool:
     """Six-stage noise filter."""
     t = _clean(text)
     if len(t) < 3:
-        return False                        # Stage 1: too short
+        if t.isdigit() and len(t) == 2:
+            pass
+        else:
+            return False                        # Stage 1: too short
     if _BARE_NUM_RE.match(t):
-        return False                        # Stage 2: bare number
+        try:
+            val = int(t)
+            if 10 <= val <= 999:
+                return True
+        except ValueError:
+            pass
+        return False                        # Stage 2: bare number (other sizes)
     noise_chars = len(_NOISE_RE.findall(t))
     if noise_chars / max(len(t), 1) > 0.25:
         return False                        # Stage 3: too noisy

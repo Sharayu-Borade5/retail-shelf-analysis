@@ -1,69 +1,383 @@
 {
   "image_name": "shelf_snacks.jpg",
-  "total_products": 42,
+  "total_products": 37,
   "brands": {
-    "Parle": 9,
-    "Britannia": 6,
-    "Lays": 4,
-    "Pringles": 3,
-    "Kurkure": 3,
-    "Britannia Dairy": 3,
-    "Doritos": 3,
+    "Lay's": 7,
+    "Pringles": 4,
+    "Good Day": 4,
     "Bingo": 3,
-    "Oreo": 3,
-    "Uncle Chipps": 2,
+    "Doritos": 3,
+    "Uncle Chips": 2,
+    "Tiger Krunch": 2,
     "Cheetos": 2,
-    "Tropicana": 1
+    "Parle-G": 2,
+    "Hide & Seek Fab": 1,
+    "Kurkure": 1,
+    "Marie Gold": 1,
+    "Malkist": 1,
+    "Hide & Seek Milano": 1,
+    "Dark Fantasy": 1,
+    "Monaco": 1,
+    "Oreo": 1
+  },
+  "brand_counts": {
+    "Lay's": 7,
+    "Pringles": 4,
+    "Good Day": 4,
+    "Bingo": 3,
+    "Doritos": 3,
+    "Uncle Chips": 2,
+    "Tiger Krunch": 2,
+    "Cheetos": 2,
+    "Parle-G": 2,
+    "Hide & Seek Fab": 1,
+    "Kurkure": 1,
+    "Marie Gold": 1,
+    "Malkist": 1,
+    "Hide & Seek Milano": 1,
+    "Dark Fantasy": 1,
+    "Monaco": 1,
+    "Oreo": 1
   },
   "share_of_shelf": {
-    "Lays": 15.54,
-    "Kurkure": 14.44,
-    "Doritos": 10.5,
-    "Cheetos": 10.37,
-    "Uncle Chipps": 10.13,
-    "Oreo": 9.11,
-    "Bingo": 8.9,
-    "Pringles": 8.88,
-    "Parle": 5.91,
-    "Britannia": 5.08,
-    "Britannia Dairy": 0.73,
-    "Tropicana": 0.42
+    "Lay's": 19.37,
+    "Britannia": 18.22,
+    "Parle": 14.73,
+    "Doritos": 10.96,
+    "Cheetos": 7.38,
+    "Pringles": 6.93,
+    "Bingo": 6.39,
+    "Uncle Chipps": 5.67,
+    "Oreo": 3.15,
+    "Dark Fantasy": 3.06,
+    "Malkist": 2.63,
+    "Kurkure": 1.51
   },
-  "ocr_labels": [
-    "Classic",
-    "Indlo's Mogic",
-    "Chile Llmon",
-    "Spanish",
-    "checs",
-    "RANCH",
-    "Mosolo",
-    "Tomoto",
-    "Tango",
-    "Style",
-    "Onion",
-    "Original",
+  "ocr_price_tags": [
+    "₹10",
+    "₹20",
+    "₹28",
+    "₹30"
+  ],
+  "products": [
+    {
+      "brand": "Pringles",
+      "sku": "Pringles",
+      "confidence": 0.28384634852409363
+    },
+    {
+      "brand": "Parle",
+      "sku": "Hide & Seek Fab",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Good Day",
+      "confidence": 0.4104691445827484
+    },
+    {
+      "brand": "Pringles",
+      "sku": "Pringles",
+      "confidence": 0.3608834147453308
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Bingo",
+      "sku": "Bingo",
+      "confidence": 0.3040305972099304
+    },
+    {
+      "brand": "Uncle Chipps",
+      "sku": "Uncle Chipps",
+      "confidence": 0.3950202763080597
+    },
+    {
+      "brand": "Pringles",
+      "sku": "Pringles",
+      "confidence": 0.33239099383354187
+    },
+    {
+      "brand": "Bingo",
+      "sku": "Bingo",
+      "confidence": 0.27274954319000244
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Good Day",
+      "confidence": 0.29523342847824097
+    },
+    {
+      "brand": "Kurkure",
+      "sku": "Kurkure",
+      "confidence": 0.3027469515800476
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Marie Gold",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Malkist",
+      "sku": "Malkist",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's Chile Limon",
+      "confidence": 0.32523876428604126
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Tiger Krunch",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Parle",
+      "sku": "Hide & Seek Milano",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Cheetos",
+      "sku": "Cheetos",
+      "confidence": 0.34455904364585876
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Tiger Krunch",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Doritos",
+      "sku": "Doritos",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's Magic Masala",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's Tomato Tango",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Parle",
+      "sku": "Parle-G",
+      "confidence": 0.36053529381752014
+    },
+    {
+      "brand": "Cheetos",
+      "sku": "Cheetos",
+      "confidence": 0.35050076246261597
+    },
+    {
+      "brand": "Parle",
+      "sku": "Parle-G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Dark Fantasy",
+      "sku": "Dark Fantasy",
+      "confidence": 0.3383612036705017
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Good Day",
+      "confidence": 0.3900718092918396
+    },
+    {
+      "brand": "Britannia",
+      "sku": "Good Day",
+      "confidence": 0.35942912101745605
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's Chile Limon",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Doritos",
+      "sku": "Doritos",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Doritos",
+      "sku": "Doritos",
+      "confidence": 0.34389060735702515
+    },
+    {
+      "brand": "Parle",
+      "sku": "Monaco",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Bingo",
+      "sku": "Bingo",
+      "confidence": 0.36567434668540955
+    },
+    {
+      "brand": "Lay's",
+      "sku": "Lay's Magic Masala",
+      "confidence": 0.30573004484176636
+    },
+    {
+      "brand": "Oreo",
+      "sku": "Oreo",
+      "confidence": 0.3142714202404022
+    },
+    {
+      "brand": "Uncle Chipps",
+      "sku": "Uncle Chipps",
+      "confidence": 1.0
+    },
+    {
+      "brand": "Pringles",
+      "sku": "Pringles",
+      "confidence": 0.24442416429519653
+    }
+  ],
+  "product_text": [
+    "\"957 _",
+    "(Ceeta",
+    "(Undlle",
+    "([ays)",
+    "(eetes",
+    "(lays)",
+    "10%",
+    "11%",
     "35% EXTRA",
+    "3J /0 EAIIA",
+    "40",
     "40% EXTRA",
-    "Achaari",
-    "Mosti",
-    "mafie",
-    "OREO",
-    "Parle-(",
-    "choco",
-    "EXTRA",
-    "HIDEGSEEK",
-    "EDark",
-    "MILANO",
-    "Chocolate",
+    "42536",
+    "5J",
+    "759",
+    "9",
+    "@botdmedapcto",
+    "@ointird",
+    "@owc",
+    "Ache",
+    "B",
+    "B10",
+    "BINGoI",
+    "CHIPS \"",
+    "CHIPS\"",
+    "Caiet",
+    "Ccld",
+    "ChIPS'",
+    "ChiPPs",
+    "Chile",
     "Choco Fills",
-    "Masola",
-    "TiGER",
-    "Malkist)",
+    "Chocolate",
+    "Classic",
+    "Cojmu",
+    "Danta",
+    "Day",
+    "Day;",
+    "Doritos",
+    "Doritzs",
+    "Dwavd]",
+    "EDark",
+    "EXTAA",
+    "EXTRA",
+    "Ecin",
+    "FABI",
+    "FHIQ",
+    "Fantasy,",
+    "GOLD",
+    "Ghcea?",
+    "Good",
+    "Gou",
+    "Grl",
+    "HIDE",
+    "HIDE &SEEK\"",
+    "Indio'$ Mogic.",
+    "Itnanuli",
+    "Juo,fionm",
     "KRUNCH",
     "KRUNCK",
-    "DAAK VANTASY"
+    "Lidd",
+    "Limon",
+    "Lunang",
+    "MD",
+    "MILANO",
+    "MORE",
+    "Malkist)",
+    "Masola",
+    "Monaco",
+    "MorE",
+    "More",
+    "Mosolo",
+    "NSt",
+    "OINadicuu (",
+    "Oant",
+    "OrEO",
+    "OrIginal",
+    "Original",
+    "PRINGLES",
+    "PaaLL]",
+    "Paall",
+    "Parle G",
+    "Parle:(",
+    "Plain Salted",
+    "PrIcles,",
+    "Pricles '",
+    "RANCH",
+    "Spanish",
+    "Spicy Tread",
+    "Style",
+    "TEXADDE",
+    "TiGER",
+    "Tomoto",
+    "Undl",
+    "anchy",
+    "ango",
+    "antee",
+    "ao% EXTRA",
+    "aucomO",
+    "buiner",
+    "checy?",
+    "chilLv",
+    "chips'",
+    "chocolate chip",
+    "collECTiONS",
+    "cooL",
+    "cusic",
+    "eufe",
+    "mafie",
+    "n5%0",
+    "odcintl",
+    "peud)",
+    "swout",
+    "uam eettetnalett",
+    "zi0",
+    "{SEEK\"",
+    "{pmuabitt",
+    "~en"
   ],
-  "shelf_rows_detected": 6,
-  "segmentation_method": "hough",
+  "price_text": [
+    "20",
+    "28",
+    "LArs",
+    "CHEETOS",
+    "KURKURE",
+    "PRingles",
+    "10",
+    "Mahie GOLD",
+    "OREO",
+    "30"
+  ],
+  "shelf_rows_detected": 4,
+  "segmentation_method": "geometric",
   "annotated_image": "C:\\Users\\Sharayu\\retail_shelf_analysis\\outputs\\visualizations\\shelf_snacks_annotated.jpg"
 }

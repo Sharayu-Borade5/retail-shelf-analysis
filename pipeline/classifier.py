@@ -20,6 +20,8 @@ from PIL import Image
 # Allow CLIP weight download on systems with SSL cert issues
 ssl._create_default_https_context = ssl._create_unverified_context
 
+from config import CLIP_MIN_CONF
+
 logger = logging.getLogger(__name__)
 
 
@@ -94,7 +96,11 @@ class BrandClassifier:
 
         sims     = (img_emb @ self._text_embs.T).squeeze(0)
         best_idx = int(sims.argmax().item())
-        return self._brand_names[best_idx], float(sims[best_idx].item())
+        best_conf = float(sims[best_idx].item())
+        # Fall back to 'Other' if similarity is too low to be reliable
+        if best_conf < CLIP_MIN_CONF:
+            return "Other", best_conf
+        return self._brand_names[best_idx], best_conf
 
     def classify_batch(self, crops_bgr: List[np.ndarray]) -> List[tuple[str, float]]:
         self._load()
@@ -118,4 +124,10 @@ class BrandClassifier:
         best_idxs  = sims.argmax(dim=1).tolist()
         best_confs = sims.max(dim=1).values.tolist()
 
-        return [(self._brand_names[i], float(c)) for i, c in zip(best_idxs, best_confs)]
+        results = []
+        for i, c in zip(best_idxs, best_confs):
+            if float(c) < CLIP_MIN_CONF:
+                results.append(("Other", float(c)))
+            else:
+                results.append((self._brand_names[i], float(c)))
+        return results

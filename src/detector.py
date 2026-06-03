@@ -81,13 +81,57 @@ def _nms(boxes: np.ndarray, scores: np.ndarray, iou_threshold: float) -> List[in
     return keep
 
 
-def _merge_detections(detections: List[Detection], iou_threshold: float) -> List[Detection]:
+def _merge_detections(
+    detections: List[Detection],
+    iou_threshold: float,
+    contain_threshold: float = 0.70
+) -> List[Detection]:
     if not detections:
         return []
+
+    # Step A: Standard NMS using confidence to remove near-identical duplicate boxes
     boxes  = np.array([[d.x1, d.y1, d.x2, d.y2] for d in detections], dtype=float)
     scores = np.array([d.confidence for d in detections])
     kept   = _nms(boxes, scores, iou_threshold)
-    return [detections[i] for i in kept]
+    nms_detections = [detections[i] for i in kept]
+
+    # Filter out detections whose area is too small compared to the median area
+    # (helps remove tiny logo, text, or graphic crops in large packaging environments)
+    if len(nms_detections) > 3:
+        median_area = np.median([d.area for d in nms_detections])
+        min_allowed_area = max(2200, 0.20 * median_area)
+    else:
+        min_allowed_area = 2000
+    nms_detections = [d for d in nms_detections if d.area >= min_allowed_area]
+
+    # Step B: Nested Detection Suppression (Fix 6)
+    # If box A is mostly inside box B (containment_a > 0.65) and A is smaller than B, suppress A.
+    suppressed_indices = set()
+    for i in range(len(nms_detections)):
+        a = nms_detections[i]
+        for j in range(len(nms_detections)):
+            if i == j or j in suppressed_indices:
+                continue
+            b = nms_detections[j]
+            
+            # Intersection coordinates
+            xx1 = max(a.x1, b.x1)
+            yy1 = max(a.y1, b.y1)
+            xx2 = min(a.x2, b.x2)
+            yy2 = min(a.y2, b.y2)
+
+            w = max(0, xx2 - xx1)
+            h = max(0, yy2 - yy1)
+            inter_area = w * h
+
+            if inter_area > 0:
+                containment_a = inter_area / float(a.area)
+                if containment_a > contain_threshold and a.area < b.area:
+                    suppressed_indices.add(i)
+                    break
+
+    final_detections = [nms_detections[i] for i in range(len(nms_detections)) if i not in suppressed_indices]
+    return final_detections
 
 
 def _build_tiles(img_h: int, img_w: int, tile_size: int, overlap: float) -> List[Tuple[int, int]]:
@@ -140,14 +184,16 @@ class ProductDetector:
         tile_size: int = 640,
         tile_overlap: float = 0.30,
         nms_iou_merge: float = 0.25,
+        nms_contain_thresh: float = 0.70,
     ):
-        self.conf          = conf
-        self.iou           = iou
-        self.min_area      = min_area
-        self.tile_size     = tile_size
-        self.tile_overlap  = tile_overlap
-        self.nms_iou_merge = nms_iou_merge
-        self._model        = None
+        self.conf               = conf
+        self.iou                = iou
+        self.min_area           = min_area
+        self.tile_size          = tile_size
+        self.tile_overlap       = tile_overlap
+        self.nms_iou_merge      = nms_iou_merge
+        self.nms_contain_thresh = nms_contain_thresh
+        self._model             = None
 
     def _load(self):
         if self._model is not None:
@@ -228,7 +274,8 @@ class ProductDetector:
         tile_dets = self._detect_tiled(image, classes)
         logger.info("Tiled pass: %d raw detections", len(tile_dets))
 
-        merged = _merge_detections(full_dets + tile_dets, self.nms_iou_merge)
+        merged = _merge_detections(full_dets + tile_dets, self.nms_iou_merge, self.nms_contain_thresh)
+        # Note: we can keep them sorted by confidence, but let's keep the confidence sorting after the containment NMS.
         merged.sort(key=lambda d: d.confidence, reverse=True)
         logger.info(
             "After NMS merge: %d products (full=%d, tiles=%d)",

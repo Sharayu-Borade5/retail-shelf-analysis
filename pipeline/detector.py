@@ -29,7 +29,7 @@ from typing import List, Tuple
 
 import numpy as np
 
-from config import TILE_SIZE, TILE_OVERLAP
+from config import TILE_SIZE, TILE_OVERLAP, NMS_IOU_MERGE
 
 logger = logging.getLogger(__name__)
 
@@ -295,9 +295,9 @@ class ProductDetector:
         tile_dets = self._detect_tiled(image, detection_classes)
         logger.info("Tiled pass: %d raw detections across all tiles", len(tile_dets))
 
-        # Merge both passes and apply global NMS
+        # Merge both passes and apply global NMS (more aggressive threshold)
         combined = full_dets + tile_dets
-        detections = _merge_detections(combined, iou_threshold=self.iou_threshold)
+        detections = _merge_detections(combined, iou_threshold=NMS_IOU_MERGE)
 
         detections.sort(key=lambda d: d.confidence, reverse=True)
         logger.info(

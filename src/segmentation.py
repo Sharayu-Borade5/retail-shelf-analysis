@@ -217,8 +217,17 @@ class ShelfSegmenter:
         """
         img_h, img_w = image.shape[:2]
 
-        # Try Hough Lines first
-        splits = _detect_shelf_lines(
+        if not detections:
+            return SegmentationResult(
+                shelf_rows=[(0, img_h)],
+                row_assignments=[],
+                brand_areas={},
+                total_area=1.0,
+                method="geometric",
+            )
+
+        # 1. Detect Hough lines (candidates)
+        hough_ys = _detect_shelf_lines(
             image,
             canny_low=self.canny_low,
             canny_high=self.canny_high,
@@ -227,20 +236,62 @@ class ShelfSegmenter:
             max_gap=self.max_line_gap,
             row_gap_min=self.row_gap_min,
         )
-        method = "hough"
 
-        if len(splits) < 2:
-            logger.debug("Hough Lines found %d splits; using geometric fallback", len(splits))
-            splits = _geometric_rows(detections, img_h, self.row_gap_min)
-            method = "geometric"
+        # 2. Cluster detections into horizontal rows using vertical overlap
+        dets = sorted(detections, key=lambda d: d.cy)
+        rows: List[List[Detection]] = []
+        for d in dets:
+            assigned = False
+            for row in rows:
+                row_y1 = min(member.y1 for member in row)
+                row_y2 = max(member.y2 for member in row)
+                overlap_h = min(d.y2, row_y2) - max(d.y1, row_y1)
+                min_h = min(d.y2 - d.y1, row_y2 - row_y1)
+                if min_h > 0 and overlap_h / min_h > 0.25:
+                    row.append(d)
+                    assigned = True
+                    break
+            if not assigned:
+                rows.append([d])
 
+        # Sort rows top-to-bottom
+        rows.sort(key=lambda r: sum(d.cy for d in r) / len(r))
+
+        # 3. Determine splits between consecutive rows
+        splits: List[int] = []
+        used_hough = 0
+        for i in range(len(rows) - 1):
+            r1_bot = max(d.y2 for d in rows[i])
+            r2_top = min(d.y1 for d in rows[i+1])
+
+            # Find Hough lines within this gap (plus a small padding)
+            gap_min = min(r1_bot, r2_top) - 15
+            gap_max = max(r1_bot, r2_top) + 15
+
+            gap_hough = [y for y in hough_ys if gap_min <= y <= gap_max]
+            if gap_hough:
+                split_y = int(np.mean(gap_hough))
+                used_hough += 1
+            else:
+                split_y = (r1_bot + r2_top) // 2
+
+            splits.append(split_y)
+
+        method = "hough" if used_hough > 0 else "geometric"
         logger.info(
-            "Shelf segmentation (%s): %d rows from %d splits",
-            method, len(splits) + 1, len(splits)
+            "Shelf segmentation (%s): %d rows from %d splits (used %d Hough lines)",
+            method, len(rows), len(splits), used_hough
         )
 
-        bands          = _splits_to_bands(splits, img_h)
-        row_assignments = [_assign_row(d, bands) for d in detections]
+        bands = _splits_to_bands(splits, img_h)
+
+        # Map each detection's unique object ID to its row index
+        det_to_row_idx: Dict[int, int] = {}
+        for row_idx, row in enumerate(rows):
+            for det in row:
+                det_to_row_idx[id(det)] = row_idx
+
+        row_assignments = [det_to_row_idx[id(d)] for d in detections]
 
         # Compute brand areas
         brand_areas: Dict[str, float] = {}
