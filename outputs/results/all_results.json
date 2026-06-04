@@ -1,77 +1,75 @@
 [
   {
     "image_name": "shelf_beverages.jpg",
-    "total_products": 83,
+    "total_products": 80,
     "brands": {
-      "Real Juice": 8,
-      "Mountain Dew": 6,
-      "Coca-Cola": 6,
-      "Pepsi": 6,
-      "Thums Up": 5,
-      "Gatorade": 4,
-      "Lipton Ice Tea": 4,
-      "Nestea": 4,
-      "Mirinda": 4,
-      "Fanta": 4,
-      "Paper Boat": 4,
-      "Minute Maid": 4,
-      "Nescafe": 3,
-      "Sprite": 3,
-      "Amul Kool": 3,
-      "7UP": 3,
-      "Limca": 3,
-      "Red Bull": 3,
-      "Tropicana": 3,
-      "B Natural": 1,
-      "Diet Coke": 1,
-      "Other": 1
+      "real juice, 99 rs, 1 L": 7,
+      "MOUNTAIN DEW 50 RS 600ML": 6,
+      "COCA COLA 50RS 600ML": 6,
+      "AMUL KOOL 30RS 300ML": 5,
+      "THUMS UP 50RS 600ML": 5,
+      "tropicana, 125 rs, 1 L": 5,
+      "NESCAFE 40RS 180ML": 4,
+      "SPRITE 50RS 600ML": 4,
+      "NESTEA 60RS 500 ML": 4,
+      "PEPSI 50RS 600ML": 4,
+      "PAPER BOAT 35RS 200ML": 4,
+      "RED BULL 110 RS 250ML": 3,
+      "LIPTON ICE TEA 60RS 500ML": 3,
+      "7UP 50RS 600ML": 3,
+      "MIRINDA 50RS 500ML": 3,
+      "FANTA 50RS 600ML": 3,
+      "LIMCA 50RS 600ML": 3,
+      "GATORADE 75RS 500ML": 3,
+      "MINUTE MAID, 105 RS, 1L": 3,
+      "DIET COKE 55RS 600ML": 1,
+      "B NATURAL 40RS 200ML": 1
     },
     "brand_counts": {
-      "Real Juice": 8,
-      "Mountain Dew": 6,
-      "Coca-Cola": 6,
-      "Pepsi": 6,
-      "Thums Up": 5,
-      "Gatorade": 4,
-      "Lipton Ice Tea": 4,
-      "Nestea": 4,
-      "Mirinda": 4,
-      "Fanta": 4,
-      "Paper Boat": 4,
-      "Minute Maid": 4,
-      "Nescafe": 3,
-      "Sprite": 3,
-      "Amul Kool": 3,
-      "7UP": 3,
-      "Limca": 3,
-      "Red Bull": 3,
-      "Tropicana": 3,
-      "B Natural": 1,
-      "Diet Coke": 1,
-      "Other": 1
+      "real juice, 99 rs, 1 L": 7,
+      "MOUNTAIN DEW 50 RS 600ML": 6,
+      "COCA COLA 50RS 600ML": 6,
+      "AMUL KOOL 30RS 300ML": 5,
+      "THUMS UP 50RS 600ML": 5,
+      "tropicana, 125 rs, 1 L": 5,
+      "NESCAFE 40RS 180ML": 4,
+      "SPRITE 50RS 600ML": 4,
+      "NESTEA 60RS 500 ML": 4,
+      "PEPSI 50RS 600ML": 4,
+      "PAPER BOAT 35RS 200ML": 4,
+      "RED BULL 110 RS 250ML": 3,
+      "LIPTON ICE TEA 60RS 500ML": 3,
+      "7UP 50RS 600ML": 3,
+      "MIRINDA 50RS 500ML": 3,
+      "FANTA 50RS 600ML": 3,
+      "LIMCA 50RS 600ML": 3,
+      "GATORADE 75RS 500ML": 3,
+      "MINUTE MAID, 105 RS, 1L": 3,
+      "DIET COKE 55RS 600ML": 1,
+      "B NATURAL 40RS 200ML": 1
     },
     "share_of_shelf": {
-      "Real Juice": 10.47,
-      "Coca-Cola": 9.04,
-      "Minute Maid": 8.36,
-      "Mountain Dew": 5.78,
-      "Fanta": 5.61,
-      "Gatorade": 5.39,
-      "Paper Boat": 5.28,
-      "Tropicana": 4.99,
-      "Thums Up": 4.76,
-      "Pepsi": 4.76,
-      "Mirinda": 4.55,
-      "Nestea": 4.44,
-      "Sprite": 4.06,
-      "Limca": 4.01,
-      "Lipton Ice Tea": 3.82,
-      "7UP": 3.53,
-      "Nescafe": 3.47,
-      "Amul Kool": 3.41,
-      "Red Bull": 2.83,
-      "B Natural": 1.03,
-      "Other": 0.4
+      "real juice, 99 rs, 1 L": 12.68,
+      "COCA COLA 50RS 600ML": 7.69,
+      "MOUNTAIN DEW 50 RS 600ML": 6.7,
+      "MINUTE MAID, 105 RS, 1L": 6.18,
+      "THUMS UP 50RS 600ML": 5.85,
+      "AMUL KOOL 30RS 300ML": 5.72,
+      "tropicana, 125 rs, 1 L": 5.56,
+      "SPRITE 50RS 600ML": 4.62,
+      "NESTEA 60RS 500 ML": 4.43,
+      "PAPER BOAT 35RS 200ML": 4.3,
+      "FANTA 50RS 600ML": 4.18,
+      "PEPSI 50RS 600ML": 4.12,
+      "RED BULL 110 RS 250ML": 4.03,
+      "LIMCA 50RS 600ML": 4.0,
+      "NESCAFE 40RS 180ML": 3.96,
+      "GATORADE 75RS 500ML": 3.65,
+      "7UP 50RS 600ML": 3.5,
+      "MIRINDA 50RS 500ML": 3.35,
+      "LIPTON ICE TEA 60RS 500ML": 3.04,
+      "DIET COKE 55RS 600ML": 1.33,
+      "B NATURAL 40RS 200ML": 1.1
     },
     "ocr_price_tags": [
       "₹30",
@@ -88,425 +86,411 @@
     ],
     "products": [
       {
-        "brand": "Nescafe",
-        "sku": "Nescafe",
+        "brand": "AMUL KOOL 30RS 300ML",
+        "sku": "AMUL KOOL 30RS 300ML",
         "confidence": 1.0
       },
       {
-        "brand": "Nescafe",
-        "sku": "Nescafe",
+        "brand": "NESCAFE 40RS 180ML",
+        "sku": "NESCAFE 40RS 180ML",
         "confidence": 1.0
       },
       {
-        "brand": "Sprite",
-        "sku": "Sprite",
+        "brand": "SPRITE 50RS 600ML",
+        "sku": "SPRITE 50RS 600ML",
         "confidence": 0.35744160413742065
       },
       {
-        "brand": "Nescafe",
-        "sku": "Nescafe",
+        "brand": "AMUL KOOL 30RS 300ML",
+        "sku": "AMUL KOOL 30RS 300ML",
         "confidence": 1.0
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 0.34253090620040894
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 0.34546446800231934
       },
       {
-        "brand": "Gatorade",
-        "sku": "Gatorade",
+        "brand": "RED BULL 110 RS 250ML",
+        "sku": "RED BULL 110 RS 250ML",
         "confidence": 0.33195066452026367
       },
       {
-        "brand": "Lipton Ice Tea",
-        "sku": "Lipton Ice Tea",
+        "brand": "LIPTON ICE TEA 60RS 500ML",
+        "sku": "LIPTON ICE TEA 60RS 500ML",
         "confidence": 1.0
       },
       {
-        "brand": "Sprite",
-        "sku": "Sprite",
+        "brand": "SPRITE 50RS 600ML",
+        "sku": "SPRITE 50RS 600ML",
         "confidence": 0.34492915868759155
       },
       {
-        "brand": "Sprite",
-        "sku": "Sprite",
+        "brand": "SPRITE 50RS 600ML",
+        "sku": "SPRITE 50RS 600ML",
         "confidence": 0.36028289794921875
       },
       {
-        "brand": "Lipton Ice Tea",
-        "sku": "Lipton Ice Tea",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Thums Up",
-        "sku": "Thums Up",
+        "brand": "THUMS UP 50RS 600ML",
+        "sku": "THUMS UP 50RS 600ML",
         "confidence": 0.3640558123588562
       },
       {
-        "brand": "Thums Up",
-        "sku": "Thums Up",
+        "brand": "THUMS UP 50RS 600ML",
+        "sku": "THUMS UP 50RS 600ML",
         "confidence": 0.37260866165161133
       },
       {
-        "brand": "Gatorade",
-        "sku": "Gatorade",
+        "brand": "RED BULL 110 RS 250ML",
+        "sku": "RED BULL 110 RS 250ML",
         "confidence": 0.34425708651542664
       },
       {
-        "brand": "Thums Up",
-        "sku": "Thums Up",
+        "brand": "THUMS UP 50RS 600ML",
+        "sku": "THUMS UP 50RS 600ML",
         "confidence": 0.3679124116897583
       },
       {
-        "brand": "Lipton Ice Tea",
-        "sku": "Lipton Ice Tea",
+        "brand": "LIPTON ICE TEA 60RS 500ML",
+        "sku": "LIPTON ICE TEA 60RS 500ML",
         "confidence": 0.3497623801231384
       },
       {
-        "brand": "Nestea",
-        "sku": "Nestea",
+        "brand": "NESTEA 60RS 500 ML",
+        "sku": "NESTEA 60RS 500 ML",
         "confidence": 1.0
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 0.35136353969573975
       },
       {
-        "brand": "Lipton Ice Tea",
-        "sku": "Lipton Ice Tea",
+        "brand": "LIPTON ICE TEA 60RS 500ML",
+        "sku": "LIPTON ICE TEA 60RS 500ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "AMUL KOOL 30RS 300ML",
+        "sku": "AMUL KOOL 30RS 300ML",
         "confidence": 0.3771421015262604
       },
       {
-        "brand": "Mirinda",
-        "sku": "Mirinda",
+        "brand": "7UP 50RS 600ML",
+        "sku": "7UP 50RS 600ML",
         "confidence": 0.3774377703666687
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 0.2889813482761383
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "DIET COKE 55RS 600ML",
+        "sku": "DIET COKE 55RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Mirinda",
-        "sku": "Mirinda",
+        "brand": "MIRINDA 50RS 500ML",
+        "sku": "MIRINDA 50RS 500ML",
         "confidence": 0.3813025951385498
       },
       {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
+        "brand": "PEPSI 50RS 600ML",
+        "sku": "PEPSI 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Nestea",
-        "sku": "Nestea",
+        "brand": "NESTEA 60RS 500 ML",
+        "sku": "NESTEA 60RS 500 ML",
         "confidence": 1.0
       },
       {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
+        "brand": "PEPSI 50RS 600ML",
+        "sku": "PEPSI 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
+        "brand": "PEPSI 50RS 600ML",
+        "sku": "PEPSI 50RS 600ML",
         "confidence": 0.31977760791778564
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "PAPER BOAT 35RS 200ML",
+        "sku": "PAPER BOAT 35RS 200ML",
         "confidence": 0.3317892253398895
       },
       {
-        "brand": "Fanta",
-        "sku": "Fanta",
+        "brand": "FANTA 50RS 600ML",
+        "sku": "FANTA 50RS 600ML",
         "confidence": 0.3619110584259033
       },
       {
-        "brand": "Fanta",
-        "sku": "Fanta",
+        "brand": "THUMS UP 50RS 600ML",
+        "sku": "THUMS UP 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "7UP",
-        "sku": "7UP",
+        "brand": "7UP 50RS 600ML",
+        "sku": "7UP 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Fanta",
-        "sku": "Fanta",
+        "brand": "FANTA 50RS 600ML",
+        "sku": "FANTA 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Mirinda",
-        "sku": "Mirinda",
+        "brand": "MIRINDA 50RS 500ML",
+        "sku": "MIRINDA 50RS 500ML",
         "confidence": 0.3637087345123291
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 0.32447874546051025
       },
       {
-        "brand": "Limca",
-        "sku": "Limca",
+        "brand": "LIMCA 50RS 600ML",
+        "sku": "LIMCA 50RS 600ML",
         "confidence": 0.3709852397441864
       },
       {
-        "brand": "Limca",
-        "sku": "Limca",
+        "brand": "LIMCA 50RS 600ML",
+        "sku": "LIMCA 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "PAPER BOAT 35RS 200ML",
+        "sku": "PAPER BOAT 35RS 200ML",
         "confidence": 0.3191666007041931
       },
       {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
+        "brand": "PEPSI 50RS 600ML",
+        "sku": "PEPSI 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Gatorade",
-        "sku": "Gatorade",
+        "brand": "RED BULL 110 RS 250ML",
+        "sku": "RED BULL 110 RS 250ML",
         "confidence": 0.34285950660705566
       },
       {
-        "brand": "7UP",
-        "sku": "7UP",
+        "brand": "7UP 50RS 600ML",
+        "sku": "7UP 50RS 600ML",
         "confidence": 0.3288503587245941
       },
       {
-        "brand": "Nestea",
-        "sku": "Nestea",
+        "brand": "NESTEA 60RS 500 ML",
+        "sku": "NESTEA 60RS 500 ML",
         "confidence": 1.0
       },
       {
-        "brand": "7UP",
-        "sku": "7UP",
+        "brand": "MOUNTAIN DEW 50 RS 600ML",
+        "sku": "MOUNTAIN DEW 50 RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "AMUL KOOL 30RS 300ML",
+        "sku": "AMUL KOOL 30RS 300ML",
         "confidence": 0.3783193826675415
       },
       {
-        "brand": "Mirinda",
-        "sku": "Mirinda",
+        "brand": "MIRINDA 50RS 500ML",
+        "sku": "MIRINDA 50RS 500ML",
         "confidence": 0.37159842252731323
       },
       {
-        "brand": "Red Bull",
-        "sku": "Red Bull",
+        "brand": "NESCAFE 40RS 180ML",
+        "sku": "NESCAFE 40RS 180ML",
         "confidence": 0.3487424850463867
       },
       {
-        "brand": "Gatorade",
-        "sku": "Gatorade",
+        "brand": "GATORADE 75RS 500ML",
+        "sku": "GATORADE 75RS 500ML",
         "confidence": 0.3623596131801605
       },
       {
-        "brand": "Limca",
-        "sku": "Limca",
+        "brand": "LIMCA 50RS 600ML",
+        "sku": "LIMCA 50RS 600ML",
         "confidence": 0.3721325993537903
       },
       {
-        "brand": "Paper Boat",
-        "sku": "Paper Boat",
+        "brand": "GATORADE 75RS 500ML",
+        "sku": "GATORADE 75RS 500ML",
         "confidence": 0.3631121516227722
       },
       {
-        "brand": "Fanta",
-        "sku": "Fanta",
+        "brand": "FANTA 50RS 600ML",
+        "sku": "FANTA 50RS 600ML",
         "confidence": 0.3652034401893616
       },
       {
-        "brand": "B Natural",
-        "sku": "B Natural",
+        "brand": "PAPER BOAT 35RS 200ML",
+        "sku": "PAPER BOAT 35RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 0.29622820019721985
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "B NATURAL 40RS 200ML",
+        "sku": "B NATURAL 40RS 200ML",
         "confidence": 0.3492848873138428
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Diet Coke",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 0.2972821295261383
       },
       {
-        "brand": "Red Bull",
-        "sku": "Red Bull",
+        "brand": "NESCAFE 40RS 180ML",
+        "sku": "NESCAFE 40RS 180ML",
         "confidence": 1.0
       },
       {
-        "brand": "Paper Boat",
-        "sku": "Paper Boat",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.2999602258205414
       },
       {
-        "brand": "Red Bull",
-        "sku": "Red Bull",
+        "brand": "NESCAFE 40RS 180ML",
+        "sku": "NESCAFE 40RS 180ML",
         "confidence": 1.0
       },
       {
-        "brand": "Paper Boat",
-        "sku": "Paper Boat",
+        "brand": "GATORADE 75RS 500ML",
+        "sku": "GATORADE 75RS 500ML",
         "confidence": 0.3676719069480896
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 0.2954471707344055
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "AMUL KOOL 30RS 300ML",
+        "sku": "AMUL KOOL 30RS 300ML",
         "confidence": 0.390472948551178
       },
       {
-        "brand": "Paper Boat",
-        "sku": "Paper Boat",
+        "brand": "PAPER BOAT 35RS 200ML",
+        "sku": "PAPER BOAT 35RS 200ML",
         "confidence": 0.361733615398407
       },
       {
-        "brand": "Coca-Cola",
-        "sku": "Coca-Cola",
+        "brand": "COCA COLA 50RS 600ML",
+        "sku": "COCA COLA 50RS 600ML",
         "confidence": 0.2993451654911041
       },
       {
-        "brand": "Nestea",
-        "sku": "Nestea",
+        "brand": "NESTEA 60RS 500 ML",
+        "sku": "NESTEA 60RS 500 ML",
         "confidence": 1.0
       },
       {
-        "brand": "Tropicana",
-        "sku": "Tropicana",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.3384314775466919
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.3358575999736786
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
+        "brand": "SPRITE 50RS 600ML",
+        "sku": "SPRITE 50RS 600ML",
         "confidence": 0.2230747938156128
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.26883023977279663
       },
       {
-        "brand": "Tropicana",
-        "sku": "Tropicana",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 1.0
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "tropicana, 125 rs, 1 L",
+        "sku": "tropicana, 125 rs, 1 L",
         "confidence": 0.2880823314189911
       },
       {
-        "brand": "Mountain Dew",
-        "sku": "Mountain Dew",
-        "confidence": 0.2412317395210266
-      },
-      {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
-        "confidence": 0.2515295743942261
-      },
-      {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.3463459312915802
       },
       {
-        "brand": "Minute Maid",
-        "sku": "Minute Maid",
+        "brand": "MINUTE MAID, 105 RS, 1L",
+        "sku": "MINUTE MAID, 105 RS, 1L",
         "confidence": 0.34632715582847595
       },
       {
-        "brand": "Real Juice",
-        "sku": "Real Juice",
+        "brand": "tropicana, 125 rs, 1 L",
+        "sku": "tropicana, 125 rs, 1 L",
         "confidence": 0.2671337127685547
       },
       {
-        "brand": "Minute Maid",
-        "sku": "Minute Maid",
+        "brand": "real juice, 99 rs, 1 L",
+        "sku": "real juice, 99 rs, 1 L",
         "confidence": 0.3919585943222046
       },
       {
-        "brand": "Pepsi",
-        "sku": "Pepsi",
-        "confidence": 0.2475011944770813
-      },
-      {
-        "brand": "Tropicana",
-        "sku": "Tropicana",
+        "brand": "tropicana, 125 rs, 1 L",
+        "sku": "tropicana, 125 rs, 1 L",
         "confidence": 1.0
       },
       {
-        "brand": "Minute Maid",
-        "sku": "Minute Maid",
+        "brand": "MINUTE MAID, 105 RS, 1L",
+        "sku": "MINUTE MAID, 105 RS, 1L",
         "confidence": 0.38925594091415405
       },
       {
-        "brand": "Minute Maid",
-        "sku": "Minute Maid",
+        "brand": "MINUTE MAID, 105 RS, 1L",
+        "sku": "MINUTE MAID, 105 RS, 1L",
         "confidence": 0.38504746556282043
       },
       {
-        "brand": "Other",
-        "sku": "Other",
-        "confidence": 0.21798445284366608
-      },
-      {
-        "brand": "Thums Up",
-        "sku": "Thums Up",
-        "confidence": 0.23095211386680603
-      },
-      {
-        "brand": "Thums Up",
-        "sku": "Thums Up",
+        "brand": "THUMS UP 50RS 600ML",
+        "sku": "THUMS UP 50RS 600ML",
         "confidence": 0.25296834111213684
+      },
+      {
+        "brand": "tropicana, 125 rs, 1 L",
+        "sku": "tropicana, 125 rs, 1 L",
+        "confidence": 1.0
+      },
+      {
+        "brand": "tropicana, 125 rs, 1 L",
+        "sku": "tropicana, 125 rs, 1 L",
+        "confidence": 0.3040895462036133
       }
     ],
     "product_text": [
       "#otordeoluriunt",
       "'bp",
       "(Read",
+      "(Tropicana",
       "(up",
       "1<",
       "3",
@@ -530,6 +514,7 @@
       "Coke",
       "DElIchT",
       "DHADY",
+      "DRRhF",
       "Deos",
       "FANIA",
       "FANTA",
@@ -627,54 +612,87 @@
   },
   {
     "image_name": "shelf_dairy.jpg",
-    "total_products": 61,
+    "total_products": 62,
     "brands": {
-      "Amul": 23,
-      "Hershey's": 8,
-      "Actimel": 5,
-      "Go Cheese Slices": 4,
-      "Amul Kool": 3,
-      "Yakult": 3,
-      "Nestle A Dahi": 3,
-      "Nestle": 2,
-      "Amul Lite": 2,
-      "Amul Cheese Spread": 2,
-      "Amul Taaza": 1,
-      "Amul Pro": 1,
-      "Milky Mist Mozzarella": 1,
-      "Milky Mist": 1,
-      "Milky Mist Butter": 1,
-      "Activia": 1
+      "AMUL GOLD MILK 62RS 1L": 7,
+      "ACITIMEL DRINK 25RS 100ML": 6,
+      "HERSHEY'S MILK SHAKE 40RS 200ML": 5,
+      "EPIGAMIA MILK SKAKE 45RS 180ML": 4,
+      "AMUL SHAKTI MILK 60RS 1L": 3,
+      "AMUL PRO MILK 35RS 220ML": 3,
+      "AMUL TAAZA TONED MILK 62RS IL": 3,
+      "YAKULT 28RS 65ML": 3,
+      "NESTLE A DAHI 20RS 100G": 3,
+      "GO CHEESE SLICES 85RS 200G": 2,
+      "AMUL KOOL 25RS 200ML": 2,
+      "MOTHER DAIRY TONED MILK 54RS IL": 2,
+      "AMUL ROYALE 30RS 200ML": 2,
+      "AMUL CHEESE SPREAD 60RS 200G": 2,
+      "BRITANIA CHEESE SLICES 60RS 220G": 2,
+      "AMUL CHEESE BLOCK 70RS 200G": 2,
+      "AMUL BUTTER 58RS 100G": 2,
+      "ACTIVIA 30RS 100G": 2,
+      "MILKY MIST MOZZARELLA 140RS 200G": 1,
+      "MILKY MIST PIZZA CHEESE 120RS 200G": 1,
+      "MILKY MIST BUTTER 55RS 100G": 1,
+      "AMUL PIZZA CHEESE 130RS 250G": 1,
+      "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1,
+      "AMUL LITE BUTTER 52RS 100G": 1,
+      "NESTLE A YOGHURT 25RS 50G": 1
     },
     "brand_counts": {
-      "Amul": 23,
-      "Hershey's": 8,
-      "Actimel": 5,
-      "Go Cheese Slices": 4,
-      "Amul Kool": 3,
-      "Yakult": 3,
-      "Nestle A Dahi": 3,
-      "Nestle": 2,
-      "Amul Lite": 2,
-      "Amul Cheese Spread": 2,
-      "Amul Taaza": 1,
-      "Amul Pro": 1,
-      "Milky Mist Mozzarella": 1,
-      "Milky Mist": 1,
-      "Milky Mist Butter": 1,
-      "Activia": 1
+      "AMUL GOLD MILK 62RS 1L": 7,
+      "ACITIMEL DRINK 25RS 100ML": 6,
+      "HERSHEY'S MILK SHAKE 40RS 200ML": 5,
+      "EPIGAMIA MILK SKAKE 45RS 180ML": 4,
+      "AMUL SHAKTI MILK 60RS 1L": 3,
+      "AMUL PRO MILK 35RS 220ML": 3,
+      "AMUL TAAZA TONED MILK 62RS IL": 3,
+      "YAKULT 28RS 65ML": 3,
+      "NESTLE A DAHI 20RS 100G": 3,
+      "GO CHEESE SLICES 85RS 200G": 2,
+      "AMUL KOOL 25RS 200ML": 2,
+      "MOTHER DAIRY TONED MILK 54RS IL": 2,
+      "AMUL ROYALE 30RS 200ML": 2,
+      "AMUL CHEESE SPREAD 60RS 200G": 2,
+      "BRITANIA CHEESE SLICES 60RS 220G": 2,
+      "AMUL CHEESE BLOCK 70RS 200G": 2,
+      "AMUL BUTTER 58RS 100G": 2,
+      "ACTIVIA 30RS 100G": 2,
+      "MILKY MIST MOZZARELLA 140RS 200G": 1,
+      "MILKY MIST PIZZA CHEESE 120RS 200G": 1,
+      "MILKY MIST BUTTER 55RS 100G": 1,
+      "AMUL PIZZA CHEESE 130RS 250G": 1,
+      "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1,
+      "AMUL LITE BUTTER 52RS 100G": 1,
+      "NESTLE A YOGHURT 25RS 50G": 1
     },
     "share_of_shelf": {
-      "Amul": 50.58,
-      "Hershey's": 9.28,
-      "Go Cheese Slices": 8.2,
-      "Nestle": 7.81,
-      "Amul Kool": 6.7,
-      "Actimel": 6.46,
-      "Milky Mist": 4.54,
-      "Yakult": 3.89,
-      "Amul Pro Milk": 1.68,
-      "Activia": 0.87
+      "AMUL GOLD MILK 62RS 1L": 14.41,
+      "ACITIMEL DRINK 25RS 100ML": 7.43,
+      "AMUL SHAKTI MILK 60RS 1L": 7.04,
+      "AMUL TAAZA TONED MILK 62RS IL": 6.11,
+      "HERSHEY'S MILK SHAKE 40RS 200ML": 6.1,
+      "NESTLE A DAHI 20RS 100G": 5.97,
+      "EPIGAMIA MILK SKAKE 45RS 180ML": 5.16,
+      "AMUL PRO MILK 35RS 220ML": 5.0,
+      "MOTHER DAIRY TONED MILK 54RS IL": 4.92,
+      "YAKULT 28RS 65ML": 3.86,
+      "GO CHEESE SLICES 85RS 200G": 3.83,
+      "AMUL ROYALE 30RS 200ML": 3.36,
+      "AMUL BUTTER 58RS 100G": 3.11,
+      "AMUL CHEESE SPREAD 60RS 200G": 3.02,
+      "AMUL PIZZA CHEESE 130RS 250G": 2.48,
+      "AMUL CHEESE BLOCK 70RS 200G": 2.45,
+      "BRITANIA CHEESE SLICES 60RS 220G": 2.35,
+      "AMUL KOOL 25RS 200ML": 2.33,
+      "MILKY MIST PIZZA CHEESE 120RS 200G": 2.05,
+      "MILKY MIST BUTTER 55RS 100G": 1.87,
+      "MILKY MIST MOZZARELLA 140RS 200G": 1.81,
+      "ACTIVIA 30RS 100G": 1.77,
+      "AMUL LITE BUTTER 52RS 100G": 1.41,
+      "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1.39,
+      "NESTLE A YOGHURT 25RS 50G": 0.76
     },
     "ocr_price_tags": [
       "₹20",
@@ -698,308 +716,313 @@
     ],
     "products": [
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Go Cheese Slices",
-        "sku": "Go Cheese Slices",
+        "brand": "MILKY MIST MOZZARELLA 140RS 200G",
+        "sku": "MILKY MIST MOZZARELLA 140RS 200G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL SHAKTI MILK 60RS 1L",
+        "sku": "AMUL SHAKTI MILK 60RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "AMUL SHAKTI MILK 60RS 1L",
+        "sku": "AMUL SHAKTI MILK 60RS 1L",
         "confidence": 0.2958019971847534
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL SHAKTI MILK 60RS 1L",
+        "sku": "AMUL SHAKTI MILK 60RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 1.0
       },
       {
-        "brand": "Go Cheese Slices",
-        "sku": "Go Cheese Slices",
+        "brand": "GO CHEESE SLICES 85RS 200G",
+        "sku": "GO CHEESE SLICES 85RS 200G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL KOOL 25RS 200ML",
+        "sku": "AMUL KOOL 25RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+        "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
         "confidence": 0.3566740155220032
       },
       {
-        "brand": "Amul Kool",
-        "sku": "Amul Kool",
+        "brand": "MOTHER DAIRY TONED MILK 54RS IL",
+        "sku": "MOTHER DAIRY TONED MILK 54RS IL",
         "confidence": 0.27878105640411377
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 0.2588682770729065
       },
       {
-        "brand": "Amul",
-        "sku": "Amul Taaza",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 0.2998547852039337
       },
       {
-        "brand": "Actimel",
-        "sku": "Actimel",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 1.0
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+        "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
         "confidence": 0.26855775713920593
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+        "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+        "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 0.2838243544101715
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "AMUL GOLD MILK 62RS 1L",
+        "sku": "AMUL GOLD MILK 62RS 1L",
         "confidence": 0.26163771748542786
       },
       {
-        "brand": "Amul Pro Milk",
-        "sku": "Amul Pro Milk",
+        "brand": "AMUL PRO MILK 35RS 220ML",
+        "sku": "AMUL PRO MILK 35RS 220ML",
         "confidence": 0.39899373054504395
       },
       {
-        "brand": "Actimel",
-        "sku": "Actimel",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 0.3181173801422119
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL PRO MILK 35RS 220ML",
+        "sku": "AMUL PRO MILK 35RS 220ML",
         "confidence": 1.0
       },
       {
-        "brand": "Actimel",
-        "sku": "Actimel",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL TAAZA TONED MILK 62RS IL",
+        "sku": "AMUL TAAZA TONED MILK 62RS IL",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL TAAZA TONED MILK 62RS IL",
+        "sku": "AMUL TAAZA TONED MILK 62RS IL",
         "confidence": 1.0
       },
       {
-        "brand": "Yakult",
-        "sku": "Yakult",
+        "brand": "YAKULT 28RS 65ML",
+        "sku": "YAKULT 28RS 65ML",
         "confidence": 0.36582621932029724
       },
       {
-        "brand": "Nestle",
-        "sku": "Nestle",
+        "brand": "NESTLE A DAHI 20RS 100G",
+        "sku": "NESTLE A DAHI 20RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Actimel",
-        "sku": "Actimel",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 0.32376277446746826
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "AMUL KOOL 25RS 200ML",
+        "sku": "AMUL KOOL 25RS 200ML",
         "confidence": 0.25027164816856384
       },
       {
-        "brand": "Yakult",
-        "sku": "Yakult",
+        "brand": "YAKULT 28RS 65ML",
+        "sku": "YAKULT 28RS 65ML",
         "confidence": 0.3512893319129944
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "MOTHER DAIRY TONED MILK 54RS IL",
+        "sku": "MOTHER DAIRY TONED MILK 54RS IL",
         "confidence": 1.0
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+        "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
         "confidence": 0.3187127709388733
       },
       {
-        "brand": "Yakult",
-        "sku": "Yakult",
+        "brand": "YAKULT 28RS 65ML",
+        "sku": "YAKULT 28RS 65ML",
         "confidence": 0.36170676350593567
       },
       {
-        "brand": "Actimel",
-        "sku": "Actimel",
+        "brand": "ACITIMEL DRINK 25RS 100ML",
+        "sku": "ACITIMEL DRINK 25RS 100ML",
         "confidence": 1.0
       },
       {
-        "brand": "Milky Mist",
-        "sku": "Milky Mist Mozzarella",
+        "brand": "MILKY MIST PIZZA CHEESE 120RS 200G",
+        "sku": "MILKY MIST PIZZA CHEESE 120RS 200G",
         "confidence": 1.0
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+        "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
         "confidence": 0.30704444646835327
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL ROYALE 30RS 200ML",
+        "sku": "AMUL ROYALE 30RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+        "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL ROYALE 30RS 200ML",
+        "sku": "AMUL ROYALE 30RS 200ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL PRO MILK 35RS 220ML",
+        "sku": "AMUL PRO MILK 35RS 220ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul Lite Butter",
+        "brand": "MILKY MIST BUTTER 55RS 100G",
+        "sku": "MILKY MIST BUTTER 55RS 100G",
         "confidence": 0.28899627923965454
       },
       {
-        "brand": "Nestle",
-        "sku": "Nestle A Dahi",
+        "brand": "NESTLE A DAHI 20RS 100G",
+        "sku": "NESTLE A DAHI 20RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+        "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul Lite Butter",
+        "brand": "AMUL CHEESE SPREAD 60RS 200G",
+        "sku": "AMUL CHEESE SPREAD 60RS 200G",
         "confidence": 0.3912980556488037
       },
       {
-        "brand": "Nestle",
-        "sku": "Nestle",
+        "brand": "NESTLE A DAHI 20RS 100G",
+        "sku": "NESTLE A DAHI 20RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Go Cheese Slices",
-        "sku": "Go Cheese Slices",
+        "brand": "AMUL PIZZA CHEESE 130RS 250G",
+        "sku": "AMUL PIZZA CHEESE 130RS 250G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul Cheese Spread",
+        "brand": "AMUL CHEESE SPREAD 60RS 200G",
+        "sku": "AMUL CHEESE SPREAD 60RS 200G",
         "confidence": 0.3789491653442383
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "BRITANIA CHEESE SLICES 60RS 220G",
+        "sku": "BRITANIA CHEESE SLICES 60RS 220G",
         "confidence": 1.0
       },
       {
-        "brand": "Go Cheese Slices",
-        "sku": "Go Cheese Slices",
+        "brand": "GO CHEESE SLICES 85RS 200G",
+        "sku": "GO CHEESE SLICES 85RS 200G",
         "confidence": 1.0
       },
       {
-        "brand": "Hershey's",
-        "sku": "Hershey's",
+        "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+        "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
         "confidence": 0.23161908984184265
       },
       {
-        "brand": "Milky Mist",
-        "sku": "Milky Mist",
+        "brand": "AMUL CHEESE BLOCK 70RS 200G",
+        "sku": "AMUL CHEESE BLOCK 70RS 200G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul Cheese Spread",
+        "brand": "GAMAL GARLIC HERBS SPREAD 60RS 200G",
+        "sku": "GAMAL GARLIC HERBS SPREAD 60RS 200G",
         "confidence": 0.3703949451446533
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL LITE BUTTER 52RS 100G",
+        "sku": "AMUL LITE BUTTER 52RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL BUTTER 58RS 100G",
+        "sku": "AMUL BUTTER 58RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "AMUL BUTTER 58RS 100G",
+        "sku": "AMUL BUTTER 58RS 100G",
         "confidence": 1.0
       },
       {
-        "brand": "Milky Mist",
-        "sku": "Milky Mist Butter",
+        "brand": "AMUL CHEESE BLOCK 70RS 200G",
+        "sku": "AMUL CHEESE BLOCK 70RS 200G",
         "confidence": 0.37570226192474365
       },
       {
-        "brand": "Amul",
-        "sku": "Amul",
+        "brand": "BRITANIA CHEESE SLICES 60RS 220G",
+        "sku": "BRITANIA CHEESE SLICES 60RS 220G",
         "confidence": 1.0
       },
       {
-        "brand": "Nestle",
-        "sku": "Nestle A Dahi",
+        "brand": "AMUL TAAZA TONED MILK 62RS IL",
+        "sku": "AMUL TAAZA TONED MILK 62RS IL",
         "confidence": 0.26203370094299316
       },
       {
-        "brand": "Nestle",
-        "sku": "Nestle A Dahi",
+        "brand": "NESTLE A YOGHURT 25RS 50G",
+        "sku": "NESTLE A YOGHURT 25RS 50G",
         "confidence": 0.2898770272731781
       },
       {
-        "brand": "Activia",
-        "sku": "Activia",
+        "brand": "ACTIVIA 30RS 100G",
+        "sku": "ACTIVIA 30RS 100G",
+        "confidence": 1.0
+      },
+      {
+        "brand": "ACTIVIA 30RS 100G",
+        "sku": "ACTIVIA 30RS 100G",
         "confidence": 1.0
       }
     ],
@@ -1021,6 +1044,7 @@
       "95",
       "ACTIVIA",
       "Aat",
+      "AcTiviA",
       "Acnail",
       "Actimel",
       "Actirel",
@@ -1147,276 +1171,277 @@
   },
   {
     "image_name": "shelf_snacks.jpg",
-    "total_products": 37,
+    "total_products": 36,
     "brands": {
-      "Lay's": 7,
-      "Pringles": 4,
-      "Good Day": 4,
-      "Bingo": 3,
-      "Doritos": 3,
-      "Uncle Chips": 2,
-      "Tiger Krunch": 2,
-      "Cheetos": 2,
-      "Parle-G": 2,
-      "Hide & Seek Fab": 1,
-      "Kurkure": 1,
-      "Marie Gold": 1,
-      "Malkist": 1,
-      "Hide & Seek Milano": 1,
-      "Dark Fantasy": 1,
-      "Monaco": 1,
-      "Oreo": 1
+      "DORITOS 28RS 44G": 5,
+      "PRINGLES 99RS 107G": 4,
+      "GOOD DAY 20RS 81G": 3,
+      "LAY'S 20RS 52.2G": 3,
+      "KURKURE 20RS 60G": 3,
+      "UNCLE CHIPS 20RS 60G": 2,
+      "MALKIST 10RS 65G": 2,
+      "TIGER KRUNCH 10RS 60G": 2,
+      "PARLE-G 10RS 80G": 2,
+      "BINGO 20RS 52G": 2,
+      "OREO 20RS 120G": 2,
+      "HIDE & SEEK FAB 20RS 112G": 1,
+      "MARIE GOLD 20RS 120G": 1,
+      "HIDE & SEEK MELANO 30RS 75G": 1,
+      "CHEETOS 20RS 35G": 1,
+      "DARK FANTASY 30RS 75G": 1,
+      "MONACO 10RS 6.5G": 1
     },
     "brand_counts": {
-      "Lay's": 7,
-      "Pringles": 4,
-      "Good Day": 4,
-      "Bingo": 3,
-      "Doritos": 3,
-      "Uncle Chips": 2,
-      "Tiger Krunch": 2,
-      "Cheetos": 2,
-      "Parle-G": 2,
-      "Hide & Seek Fab": 1,
-      "Kurkure": 1,
-      "Marie Gold": 1,
-      "Malkist": 1,
-      "Hide & Seek Milano": 1,
-      "Dark Fantasy": 1,
-      "Monaco": 1,
-      "Oreo": 1
+      "DORITOS 28RS 44G": 5,
+      "PRINGLES 99RS 107G": 4,
+      "GOOD DAY 20RS 81G": 3,
+      "LAY'S 20RS 52.2G": 3,
+      "KURKURE 20RS 60G": 3,
+      "UNCLE CHIPS 20RS 60G": 2,
+      "MALKIST 10RS 65G": 2,
+      "TIGER KRUNCH 10RS 60G": 2,
+      "PARLE-G 10RS 80G": 2,
+      "BINGO 20RS 52G": 2,
+      "OREO 20RS 120G": 2,
+      "HIDE & SEEK FAB 20RS 112G": 1,
+      "MARIE GOLD 20RS 120G": 1,
+      "HIDE & SEEK MELANO 30RS 75G": 1,
+      "CHEETOS 20RS 35G": 1,
+      "DARK FANTASY 30RS 75G": 1,
+      "MONACO 10RS 6.5G": 1
     },
     "share_of_shelf": {
-      "Lay's": 19.37,
-      "Britannia": 18.22,
-      "Parle": 14.73,
-      "Doritos": 10.96,
-      "Cheetos": 7.38,
-      "Pringles": 6.93,
-      "Bingo": 6.39,
-      "Uncle Chipps": 5.67,
-      "Oreo": 3.15,
-      "Dark Fantasy": 3.06,
-      "Malkist": 2.63,
-      "Kurkure": 1.51
+      "DORITOS 28RS 44G": 15.99,
+      "KURKURE 20RS 60G": 9.37,
+      "LAY'S 20RS 52.2G": 9.28,
+      "PRINGLES 99RS 107G": 8.57,
+      "UNCLE CHIPS 20RS 60G": 6.56,
+      "GOOD DAY 20RS 81G": 6.54,
+      "BINGO 20RS 52G": 5.54,
+      "OREO 20RS 120G": 5.49,
+      "TIGER KRUNCH 10RS 60G": 5.34,
+      "MALKIST 10RS 65G": 4.83,
+      "PARLE-G 10RS 80G": 4.22,
+      "CHEETOS 20RS 35G": 3.5,
+      "HIDE & SEEK MELANO 30RS 75G": 3.41,
+      "MARIE GOLD 20RS 120G": 3.07,
+      "MONACO 10RS 6.5G": 2.79,
+      "HIDE & SEEK FAB 20RS 112G": 2.76,
+      "DARK FANTASY 30RS 75G": 2.74
     },
     "ocr_price_tags": [
       "₹10",
       "₹20",
       "₹28",
-      "₹30"
+      "₹30",
+      "₹99"
     ],
     "products": [
       {
-        "brand": "Pringles",
-        "sku": "Pringles",
+        "brand": "PRINGLES 99RS 107G",
+        "sku": "PRINGLES 99RS 107G",
         "confidence": 0.28384634852409363
       },
       {
-        "brand": "Parle",
-        "sku": "Hide & Seek Fab",
+        "brand": "HIDE & SEEK FAB 20RS 112G",
+        "sku": "HIDE & SEEK FAB 20RS 112G",
         "confidence": 1.0
       },
       {
-        "brand": "Britannia",
-        "sku": "Good Day",
-        "confidence": 0.4104691445827484
+        "brand": "GOOD DAY 20RS 81G",
+        "sku": "GOOD DAY 20RS 81G",
+        "confidence": 0.4104692041873932
       },
       {
-        "brand": "Pringles",
-        "sku": "Pringles",
-        "confidence": 0.3608834147453308
+        "brand": "PRINGLES 99RS 107G",
+        "sku": "PRINGLES 99RS 107G",
+        "confidence": 0.360883504152298
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's",
+        "brand": "LAY'S 20RS 52.2G",
+        "sku": "LAY'S 20RS 52.2G",
         "confidence": 1.0
       },
       {
-        "brand": "Bingo",
-        "sku": "Bingo",
-        "confidence": 0.3040305972099304
+        "brand": "UNCLE CHIPS 20RS 60G",
+        "sku": "UNCLE CHIPS 20RS 60G",
+        "confidence": 0.39502018690109253
       },
       {
-        "brand": "Uncle Chipps",
-        "sku": "Uncle Chipps",
-        "confidence": 0.3950202763080597
+        "brand": "PRINGLES 99RS 107G",
+        "sku": "PRINGLES 99RS 107G",
+        "confidence": 0.33239105343818665
       },
       {
-        "brand": "Pringles",
-        "sku": "Pringles",
-        "confidence": 0.33239099383354187
-      },
-      {
-        "brand": "Bingo",
-        "sku": "Bingo",
-        "confidence": 0.27274954319000244
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Good Day",
-        "confidence": 0.29523342847824097
-      },
-      {
-        "brand": "Kurkure",
-        "sku": "Kurkure",
-        "confidence": 0.3027469515800476
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Marie Gold",
+        "brand": "MARIE GOLD 20RS 120G",
+        "sku": "MARIE GOLD 20RS 120G",
         "confidence": 1.0
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's",
+        "brand": "LAY'S 20RS 52.2G",
+        "sku": "LAY'S 20RS 52.2G",
         "confidence": 1.0
       },
       {
-        "brand": "Malkist",
-        "sku": "Malkist",
+        "brand": "MALKIST 10RS 65G",
+        "sku": "MALKIST 10RS 65G",
         "confidence": 1.0
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's Chile Limon",
-        "confidence": 0.32523876428604126
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Tiger Krunch",
+        "brand": "KURKURE 20RS 60G",
+        "sku": "KURKURE 20RS 60G",
         "confidence": 1.0
       },
       {
-        "brand": "Parle",
-        "sku": "Hide & Seek Milano",
+        "brand": "UNCLE CHIPS 20RS 60G",
+        "sku": "UNCLE CHIPS 20RS 60G",
         "confidence": 1.0
       },
       {
-        "brand": "Cheetos",
-        "sku": "Cheetos",
-        "confidence": 0.34455904364585876
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Tiger Krunch",
+        "brand": "KURKURE 20RS 60G",
+        "sku": "KURKURE 20RS 60G",
         "confidence": 1.0
       },
       {
-        "brand": "Doritos",
-        "sku": "Doritos",
+        "brand": "TIGER KRUNCH 10RS 60G",
+        "sku": "TIGER KRUNCH 10RS 60G",
         "confidence": 1.0
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's Magic Masala",
+        "brand": "HIDE & SEEK MELANO 30RS 75G",
+        "sku": "HIDE & SEEK MELANO 30RS 75G",
         "confidence": 1.0
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's Tomato Tango",
+        "brand": "DORITOS 28RS 44G",
+        "sku": "DORITOS 28RS 44G",
+        "confidence": 0.3445590138435364
+      },
+      {
+        "brand": "TIGER KRUNCH 10RS 60G",
+        "sku": "TIGER KRUNCH 10RS 60G",
         "confidence": 1.0
       },
       {
-        "brand": "Parle",
-        "sku": "Parle-G",
+        "brand": "DORITOS 28RS 44G",
+        "sku": "DORITOS 28RS 44G",
+        "confidence": 1.0
+      },
+      {
+        "brand": "KURKURE 20RS 60G",
+        "sku": "KURKURE 20RS 60G",
+        "confidence": 1.0
+      },
+      {
+        "brand": "MALKIST 10RS 65G",
+        "sku": "MALKIST 10RS 65G",
+        "confidence": 1.0
+      },
+      {
+        "brand": "DORITOS 28RS 44G",
+        "sku": "DORITOS 28RS 44G",
+        "confidence": 1.0
+      },
+      {
+        "brand": "PARLE-G 10RS 80G",
+        "sku": "PARLE-G 10RS 80G",
         "confidence": 0.36053529381752014
       },
       {
-        "brand": "Cheetos",
-        "sku": "Cheetos",
-        "confidence": 0.35050076246261597
+        "brand": "CHEETOS 20RS 35G",
+        "sku": "CHEETOS 20RS 35G",
+        "confidence": 0.35050085186958313
       },
       {
-        "brand": "Parle",
-        "sku": "Parle-G",
+        "brand": "PARLE-G 10RS 80G",
+        "sku": "PARLE-G 10RS 80G",
         "confidence": 1.0
       },
       {
-        "brand": "Dark Fantasy",
-        "sku": "Dark Fantasy",
-        "confidence": 0.3383612036705017
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Good Day",
-        "confidence": 0.3900718092918396
-      },
-      {
-        "brand": "Britannia",
-        "sku": "Good Day",
-        "confidence": 0.35942912101745605
-      },
-      {
-        "brand": "Lay's",
-        "sku": "Lay's Chile Limon",
+        "brand": "PRINGLES 99RS 107G",
+        "sku": "PRINGLES 99RS 107G",
         "confidence": 1.0
       },
       {
-        "brand": "Doritos",
-        "sku": "Doritos",
+        "brand": "DARK FANTASY 30RS 75G",
+        "sku": "DARK FANTASY 30RS 75G",
+        "confidence": 0.3383612632751465
+      },
+      {
+        "brand": "BINGO 20RS 52G",
+        "sku": "BINGO 20RS 52G",
+        "confidence": 0.3663645088672638
+      },
+      {
+        "brand": "GOOD DAY 20RS 81G",
+        "sku": "GOOD DAY 20RS 81G",
+        "confidence": 0.39007192850112915
+      },
+      {
+        "brand": "GOOD DAY 20RS 81G",
+        "sku": "GOOD DAY 20RS 81G",
+        "confidence": 0.3594290614128113
+      },
+      {
+        "brand": "LAY'S 20RS 52.2G",
+        "sku": "LAY'S 20RS 52.2G",
         "confidence": 1.0
       },
       {
-        "brand": "Doritos",
-        "sku": "Doritos",
-        "confidence": 0.34389060735702515
-      },
-      {
-        "brand": "Parle",
-        "sku": "Monaco",
+        "brand": "DORITOS 28RS 44G",
+        "sku": "DORITOS 28RS 44G",
         "confidence": 1.0
       },
       {
-        "brand": "Bingo",
-        "sku": "Bingo",
-        "confidence": 0.36567434668540955
+        "brand": "DORITOS 28RS 44G",
+        "sku": "DORITOS 28RS 44G",
+        "confidence": 0.34389054775238037
       },
       {
-        "brand": "Lay's",
-        "sku": "Lay's Magic Masala",
-        "confidence": 0.30573004484176636
+        "brand": "MONACO 10RS 6.5G",
+        "sku": "MONACO 10RS 6.5G",
+        "confidence": 1.0
       },
       {
-        "brand": "Oreo",
-        "sku": "Oreo",
+        "brand": "BINGO 20RS 52G",
+        "sku": "BINGO 20RS 52G",
+        "confidence": 0.36567431688308716
+      },
+      {
+        "brand": "OREO 20RS 120G",
+        "sku": "OREO 20RS 120G",
         "confidence": 0.3142714202404022
       },
       {
-        "brand": "Uncle Chipps",
-        "sku": "Uncle Chipps",
+        "brand": "OREO 20RS 120G",
+        "sku": "OREO 20RS 120G",
         "confidence": 1.0
-      },
-      {
-        "brand": "Pringles",
-        "sku": "Pringles",
-        "confidence": 0.24442416429519653
       }
     ],
     "product_text": [
       "\"957 _",
       "(Ceeta",
-      "(Undlle",
       "([ays)",
       "(eetes",
       "(lays)",
       "10%",
       "11%",
+      "20% EXTRA",
       "35% EXTRA",
-      "3J /0 EAIIA",
       "40",
       "40% EXTRA",
       "42536",
       "5J",
       "759",
       "9",
+      "@BINGo?",
       "@botdmedapcto",
       "@ointird",
       "@owc",
-      "Ache",
-      "B",
+      "Achanri",
       "B10",
       "BINGoI",
+      "BNGo",
       "CHIPS \"",
       "CHIPS\"",
       "Caiet",
@@ -1427,7 +1452,9 @@
       "Choco Fills",
       "Chocolate",
       "Classic",
+      "Cnoco",
       "Cojmu",
+      "Cream",
       "Danta",
       "Day",
       "Day;",
@@ -1453,21 +1480,26 @@
       "Juo,fionm",
       "KRUNCH",
       "KRUNCK",
+      "Kurkure",
       "Lidd",
       "Limon",
       "Lunang",
-      "MD",
+      "MDANGES |",
       "MILANO",
       "MORE",
       "Malkist)",
       "Masola",
+      "Masti",
       "Monaco",
       "MorE",
       "More",
       "Mosolo",
       "NSt",
       "OINadicuu (",
+      "OREO",
+      "Oae",
       "Oant",
+      "Onion",
       "OrEO",
       "OrIginal",
       "Original",
@@ -1481,7 +1513,7 @@
       "Pricles '",
       "RANCH",
       "Spanish",
-      "Spicy Tread",
+      "Spicy Treed",
       "Style",
       "TEXADDE",
       "TiGER",
@@ -1496,9 +1528,11 @@
       "checy?",
       "chilLv",
       "chips'",
+      "choco",
       "chocolate chip",
       "collECTiONS",
       "cooL",
+      "crdmo",
       "cusic",
       "eufe",
       "mafie",
@@ -1506,9 +1540,9 @@
       "odcintl",
       "peud)",
       "swout",
-      "uam eettetnalett",
       "zi0",
       "{SEEK\"",
+      "{Undle",
       "{pmuabitt",
       "~en"
     ],
@@ -1517,8 +1551,9 @@
       "28",
       "LArs",
       "CHEETOS",
-      "KURKURE",
-      "PRingles",
+      "99",
+      "UNCLE ChiPPS",
+      "BINGO",
       "10",
       "Mahie GOLD",
       "OREO",

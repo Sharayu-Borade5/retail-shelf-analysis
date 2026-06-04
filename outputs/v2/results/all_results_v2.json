@@ -1,0 +1,316 @@
+[
+  {
+    "image_name": "shelf_beverages.jpg",
+    "image_size": {
+      "width": 1448,
+      "height": 1086
+    },
+    "shelf_type": "beverages",
+    "product_count": 0,
+    "brand_count": 0,
+    "brands": {},
+    "shelf_share_pct": {},
+    "shelf_occupancy_pct": 0.0,
+    "shelf_rows": 0,
+    "out_of_stock_zones": [
+      {
+        "x_start": 0,
+        "x_end": 1448,
+        "width_px": 1448,
+        "width_pct": 100.0
+      }
+    ],
+    "ocr_price_tags": [],
+    "inference_ms": 0.0,
+    "detections": []
+  },
+  {
+    "image_name": "shelf_dairy.jpg",
+    "image_size": {
+      "width": 1402,
+      "height": 1122
+    },
+    "shelf_type": "dairy",
+    "product_count": 0,
+    "brand_count": 0,
+    "brands": {},
+    "shelf_share_pct": {},
+    "shelf_occupancy_pct": 0.0,
+    "shelf_rows": 0,
+    "out_of_stock_zones": [
+      {
+        "x_start": 0,
+        "x_end": 1402,
+        "width_px": 1402,
+        "width_pct": 100.0
+      }
+    ],
+    "ocr_price_tags": [],
+    "inference_ms": 0.0,
+    "detections": []
+  },
+  {
+    "image_name": "shelf_snacks.jpg",
+    "image_size": {
+      "width": 1448,
+      "height": 1086
+    },
+    "shelf_type": "snacks",
+    "product_count": 13,
+    "brand_count": 8,
+    "brands": {
+      "Good Day": 3,
+      "Oreo": 3,
+      "Tiger Krunch": 2,
+      "Monaco": 1,
+      "Lay's": 1,
+      "Tropicana": 1,
+      "Malkist": 1,
+      "Fanta": 1
+    },
+    "shelf_share_pct": {
+      "Oreo": 24.42,
+      "Tiger Krunch": 20.09,
+      "Good Day": 17.04,
+      "Monaco": 9.94,
+      "Fanta": 7.98,
+      "Tropicana": 7.73,
+      "Malkist": 6.63,
+      "Lay's": 6.16
+    },
+    "shelf_occupancy_pct": 67.68,
+    "shelf_rows": 3,
+    "out_of_stock_zones": [
+      {
+        "x_start": 314,
+        "x_end": 504,
+        "width_px": 190,
+        "width_pct": 13.1
+      },
+      {
+        "x_start": 998,
+        "x_end": 1096,
+        "width_px": 98,
+        "width_pct": 6.8
+      }
+    ],
+    "ocr_price_tags": [
+      "J0",
+      "20",
+      "28",
+      "40",
+      "65 9"
+    ],
+    "inference_ms": 5924.4,
+    "detections": [
+      {
+        "brand": "Good Day",
+        "det_conf": 0.854,
+        "brand_conf": 0.2639,
+        "visual_score": 0.2731,
+        "ocr_score": 0.0,
+        "context_score": 1.0,
+        "method": "visual",
+        "has_mask": true,
+        "bbox": {
+          "x1": 503,
+          "y1": 641,
+          "x2": 599,
+          "y2": 724
+        }
+      },
+      {
+        "brand": "Good Day",
+        "det_conf": 0.6117,
+        "brand_conf": 0.2627,
+        "visual_score": 0.2712,
+        "ocr_score": 0.0,
+        "context_score": 1.0,
+        "method": "visual",
+        "has_mask": true,
+        "bbox": {
+          "x1": 630,
+          "y1": 647,
+          "x2": 728,
+          "y2": 730
+        }
+      },
+      {
+        "brand": "Good Day",
+        "det_conf": 0.5369,
+        "brand_conf": 0.2549,
+        "visual_score": 0.2581,
+        "ocr_score": 0.0,
+        "context_score": 1.0,
+        "method": "visual",
+        "has_mask": true,
+        "bbox": {
+          "x1": 761,
+          "y1": 640,
+          "x2": 841,
+          "y2": 730
+        }
+      },
+      {
+        "brand": "Monaco",
+        "det_conf": 0.3979,
+        "brand_conf": 0.3877,
+        "visual_score": 0.24,
+        "ocr_score": 0.959,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 12,
+          "y1": 623,
+          "x2": 136,
+          "y2": 729
+        }
+      },
+      {
+        "brand": "Lay's",
+        "det_conf": 0.3805,
+        "brand_conf": 0.2659,
+        "visual_score": 0.2445,
+        "ocr_score": 0.553,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 160,
+          "y1": 53,
+          "x2": 256,
+          "y2": 138
+        }
+      },
+      {
+        "brand": "Tropicana",
+        "det_conf": 0.3681,
+        "brand_conf": 0.0906,
+        "visual_score": 0.151,
+        "ocr_score": 0.0,
+        "context_score": 0.0,
+        "method": "visual",
+        "has_mask": true,
+        "bbox": {
+          "x1": 657,
+          "y1": 879,
+          "x2": 779,
+          "y2": 963
+        }
+      },
+      {
+        "brand": "Oreo",
+        "det_conf": 0.3439,
+        "brand_conf": 0.2656,
+        "visual_score": 0.2696,
+        "ocr_score": 0.552,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 1095,
+          "y1": 646,
+          "x2": 1240,
+          "y2": 727
+        }
+      },
+      {
+        "brand": "Tiger Krunch",
+        "det_conf": 0.3177,
+        "brand_conf": 0.2929,
+        "visual_score": 0.1337,
+        "ocr_score": 0.643,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 185,
+          "y1": 866,
+          "x2": 313,
+          "y2": 982
+        }
+      },
+      {
+        "brand": "Malkist",
+        "det_conf": 0.302,
+        "brand_conf": 0.3022,
+        "visual_score": 0.266,
+        "ocr_score": 0.674,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 1117,
+          "y1": 895,
+          "x2": 1224,
+          "y2": 977
+        }
+      },
+      {
+        "brand": "Fanta",
+        "det_conf": 0.2393,
+        "brand_conf": 0.2028,
+        "visual_score": 0.1451,
+        "ocr_score": 0.676,
+        "context_score": 0.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 883,
+          "y1": 885,
+          "x2": 997,
+          "y2": 978
+        }
+      },
+      {
+        "brand": "Oreo",
+        "det_conf": 0.2314,
+        "brand_conf": 0.2421,
+        "visual_score": 0.2368,
+        "ocr_score": 0.462,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 14,
+          "y1": 51,
+          "x2": 117,
+          "y2": 135
+        }
+      },
+      {
+        "brand": "Tiger Krunch",
+        "det_conf": 0.2194,
+        "brand_conf": 0.3283,
+        "visual_score": 0.2773,
+        "ocr_score": 0.761,
+        "context_score": 1.0,
+        "method": "visual+ocr",
+        "has_mask": true,
+        "bbox": {
+          "x1": 11,
+          "y1": 877,
+          "x2": 126,
+          "y2": 979
+        }
+      },
+      {
+        "brand": "Oreo",
+        "det_conf": 0.1936,
+        "brand_conf": 0.2686,
+        "visual_score": 0.281,
+        "ocr_score": 0.0,
+        "context_score": 1.0,
+        "method": "visual",
+        "has_mask": true,
+        "bbox": {
+          "x1": 1281,
+          "y1": 35,
+          "x2": 1417,
+          "y2": 123
+        }
+      }
+    ]
+  }
+]

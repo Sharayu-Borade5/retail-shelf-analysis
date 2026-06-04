@@ -99,7 +99,7 @@ def _merge_detections(
     # (helps remove tiny logo, text, or graphic crops in large packaging environments)
     if len(nms_detections) > 3:
         median_area = np.median([d.area for d in nms_detections])
-        min_allowed_area = max(2200, 0.20 * median_area)
+        min_allowed_area = max(2200, 0.25 * median_area)
     else:
         min_allowed_area = 2000
     nms_detections = [d for d in nms_detections if d.area >= min_allowed_area]

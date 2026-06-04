@@ -1,53 +1,86 @@
 {
   "image_name": "shelf_dairy.jpg",
-  "total_products": 61,
+  "total_products": 62,
   "brands": {
-    "Amul": 23,
-    "Hershey's": 8,
-    "Actimel": 5,
-    "Go Cheese Slices": 4,
-    "Amul Kool": 3,
-    "Yakult": 3,
-    "Nestle A Dahi": 3,
-    "Nestle": 2,
-    "Amul Lite": 2,
-    "Amul Cheese Spread": 2,
-    "Amul Taaza": 1,
-    "Amul Pro": 1,
-    "Milky Mist Mozzarella": 1,
-    "Milky Mist": 1,
-    "Milky Mist Butter": 1,
-    "Activia": 1
+    "AMUL GOLD MILK 62RS 1L": 7,
+    "ACITIMEL DRINK 25RS 100ML": 6,
+    "HERSHEY'S MILK SHAKE 40RS 200ML": 5,
+    "EPIGAMIA MILK SKAKE 45RS 180ML": 4,
+    "AMUL SHAKTI MILK 60RS 1L": 3,
+    "AMUL PRO MILK 35RS 220ML": 3,
+    "AMUL TAAZA TONED MILK 62RS IL": 3,
+    "YAKULT 28RS 65ML": 3,
+    "NESTLE A DAHI 20RS 100G": 3,
+    "GO CHEESE SLICES 85RS 200G": 2,
+    "AMUL KOOL 25RS 200ML": 2,
+    "MOTHER DAIRY TONED MILK 54RS IL": 2,
+    "AMUL ROYALE 30RS 200ML": 2,
+    "AMUL CHEESE SPREAD 60RS 200G": 2,
+    "BRITANIA CHEESE SLICES 60RS 220G": 2,
+    "AMUL CHEESE BLOCK 70RS 200G": 2,
+    "AMUL BUTTER 58RS 100G": 2,
+    "ACTIVIA 30RS 100G": 2,
+    "MILKY MIST MOZZARELLA 140RS 200G": 1,
+    "MILKY MIST PIZZA CHEESE 120RS 200G": 1,
+    "MILKY MIST BUTTER 55RS 100G": 1,
+    "AMUL PIZZA CHEESE 130RS 250G": 1,
+    "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1,
+    "AMUL LITE BUTTER 52RS 100G": 1,
+    "NESTLE A YOGHURT 25RS 50G": 1
   },
   "brand_counts": {
-    "Amul": 23,
-    "Hershey's": 8,
-    "Actimel": 5,
-    "Go Cheese Slices": 4,
-    "Amul Kool": 3,
-    "Yakult": 3,
-    "Nestle A Dahi": 3,
-    "Nestle": 2,
-    "Amul Lite": 2,
-    "Amul Cheese Spread": 2,
-    "Amul Taaza": 1,
-    "Amul Pro": 1,
-    "Milky Mist Mozzarella": 1,
-    "Milky Mist": 1,
-    "Milky Mist Butter": 1,
-    "Activia": 1
+    "AMUL GOLD MILK 62RS 1L": 7,
+    "ACITIMEL DRINK 25RS 100ML": 6,
+    "HERSHEY'S MILK SHAKE 40RS 200ML": 5,
+    "EPIGAMIA MILK SKAKE 45RS 180ML": 4,
+    "AMUL SHAKTI MILK 60RS 1L": 3,
+    "AMUL PRO MILK 35RS 220ML": 3,
+    "AMUL TAAZA TONED MILK 62RS IL": 3,
+    "YAKULT 28RS 65ML": 3,
+    "NESTLE A DAHI 20RS 100G": 3,
+    "GO CHEESE SLICES 85RS 200G": 2,
+    "AMUL KOOL 25RS 200ML": 2,
+    "MOTHER DAIRY TONED MILK 54RS IL": 2,
+    "AMUL ROYALE 30RS 200ML": 2,
+    "AMUL CHEESE SPREAD 60RS 200G": 2,
+    "BRITANIA CHEESE SLICES 60RS 220G": 2,
+    "AMUL CHEESE BLOCK 70RS 200G": 2,
+    "AMUL BUTTER 58RS 100G": 2,
+    "ACTIVIA 30RS 100G": 2,
+    "MILKY MIST MOZZARELLA 140RS 200G": 1,
+    "MILKY MIST PIZZA CHEESE 120RS 200G": 1,
+    "MILKY MIST BUTTER 55RS 100G": 1,
+    "AMUL PIZZA CHEESE 130RS 250G": 1,
+    "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1,
+    "AMUL LITE BUTTER 52RS 100G": 1,
+    "NESTLE A YOGHURT 25RS 50G": 1
   },
   "share_of_shelf": {
-    "Amul": 50.58,
-    "Hershey's": 9.28,
-    "Go Cheese Slices": 8.2,
-    "Nestle": 7.81,
-    "Amul Kool": 6.7,
-    "Actimel": 6.46,
-    "Milky Mist": 4.54,
-    "Yakult": 3.89,
-    "Amul Pro Milk": 1.68,
-    "Activia": 0.87
+    "AMUL GOLD MILK 62RS 1L": 14.41,
+    "ACITIMEL DRINK 25RS 100ML": 7.43,
+    "AMUL SHAKTI MILK 60RS 1L": 7.04,
+    "AMUL TAAZA TONED MILK 62RS IL": 6.11,
+    "HERSHEY'S MILK SHAKE 40RS 200ML": 6.1,
+    "NESTLE A DAHI 20RS 100G": 5.97,
+    "EPIGAMIA MILK SKAKE 45RS 180ML": 5.16,
+    "AMUL PRO MILK 35RS 220ML": 5.0,
+    "MOTHER DAIRY TONED MILK 54RS IL": 4.92,
+    "YAKULT 28RS 65ML": 3.86,
+    "GO CHEESE SLICES 85RS 200G": 3.83,
+    "AMUL ROYALE 30RS 200ML": 3.36,
+    "AMUL BUTTER 58RS 100G": 3.11,
+    "AMUL CHEESE SPREAD 60RS 200G": 3.02,
+    "AMUL PIZZA CHEESE 130RS 250G": 2.48,
+    "AMUL CHEESE BLOCK 70RS 200G": 2.45,
+    "BRITANIA CHEESE SLICES 60RS 220G": 2.35,
+    "AMUL KOOL 25RS 200ML": 2.33,
+    "MILKY MIST PIZZA CHEESE 120RS 200G": 2.05,
+    "MILKY MIST BUTTER 55RS 100G": 1.87,
+    "MILKY MIST MOZZARELLA 140RS 200G": 1.81,
+    "ACTIVIA 30RS 100G": 1.77,
+    "AMUL LITE BUTTER 52RS 100G": 1.41,
+    "GAMAL GARLIC HERBS SPREAD 60RS 200G": 1.39,
+    "NESTLE A YOGHURT 25RS 50G": 0.76
   },
   "ocr_price_tags": [
     "₹20",
@@ -71,308 +104,313 @@
   ],
   "products": [
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Go Cheese Slices",
-      "sku": "Go Cheese Slices",
+      "brand": "MILKY MIST MOZZARELLA 140RS 200G",
+      "sku": "MILKY MIST MOZZARELLA 140RS 200G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL SHAKTI MILK 60RS 1L",
+      "sku": "AMUL SHAKTI MILK 60RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Amul Kool",
-      "sku": "Amul Kool",
+      "brand": "AMUL SHAKTI MILK 60RS 1L",
+      "sku": "AMUL SHAKTI MILK 60RS 1L",
       "confidence": 0.2958019971847534
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL SHAKTI MILK 60RS 1L",
+      "sku": "AMUL SHAKTI MILK 60RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 1.0
     },
     {
-      "brand": "Go Cheese Slices",
-      "sku": "Go Cheese Slices",
+      "brand": "GO CHEESE SLICES 85RS 200G",
+      "sku": "GO CHEESE SLICES 85RS 200G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL KOOL 25RS 200ML",
+      "sku": "AMUL KOOL 25RS 200ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul Kool",
-      "sku": "Amul Kool",
+      "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+      "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
       "confidence": 0.3566740155220032
     },
     {
-      "brand": "Amul Kool",
-      "sku": "Amul Kool",
+      "brand": "MOTHER DAIRY TONED MILK 54RS IL",
+      "sku": "MOTHER DAIRY TONED MILK 54RS IL",
       "confidence": 0.27878105640411377
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 0.2588682770729065
     },
     {
-      "brand": "Amul",
-      "sku": "Amul Taaza",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 0.2998547852039337
     },
     {
-      "brand": "Actimel",
-      "sku": "Actimel",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 1.0
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+      "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
       "confidence": 0.26855775713920593
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+      "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+      "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
       "confidence": 1.0
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 0.2838243544101715
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "AMUL GOLD MILK 62RS 1L",
+      "sku": "AMUL GOLD MILK 62RS 1L",
       "confidence": 0.26163771748542786
     },
     {
-      "brand": "Amul Pro Milk",
-      "sku": "Amul Pro Milk",
+      "brand": "AMUL PRO MILK 35RS 220ML",
+      "sku": "AMUL PRO MILK 35RS 220ML",
       "confidence": 0.39899373054504395
     },
     {
-      "brand": "Actimel",
-      "sku": "Actimel",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 0.3181173801422119
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL PRO MILK 35RS 220ML",
+      "sku": "AMUL PRO MILK 35RS 220ML",
       "confidence": 1.0
     },
     {
-      "brand": "Actimel",
-      "sku": "Actimel",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL TAAZA TONED MILK 62RS IL",
+      "sku": "AMUL TAAZA TONED MILK 62RS IL",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL TAAZA TONED MILK 62RS IL",
+      "sku": "AMUL TAAZA TONED MILK 62RS IL",
       "confidence": 1.0
     },
     {
-      "brand": "Yakult",
-      "sku": "Yakult",
+      "brand": "YAKULT 28RS 65ML",
+      "sku": "YAKULT 28RS 65ML",
       "confidence": 0.36582621932029724
     },
     {
-      "brand": "Nestle",
-      "sku": "Nestle",
+      "brand": "NESTLE A DAHI 20RS 100G",
+      "sku": "NESTLE A DAHI 20RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Actimel",
-      "sku": "Actimel",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 0.32376277446746826
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "AMUL KOOL 25RS 200ML",
+      "sku": "AMUL KOOL 25RS 200ML",
       "confidence": 0.25027164816856384
     },
     {
-      "brand": "Yakult",
-      "sku": "Yakult",
+      "brand": "YAKULT 28RS 65ML",
+      "sku": "YAKULT 28RS 65ML",
       "confidence": 0.3512893319129944
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "MOTHER DAIRY TONED MILK 54RS IL",
+      "sku": "MOTHER DAIRY TONED MILK 54RS IL",
       "confidence": 1.0
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+      "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
       "confidence": 0.3187127709388733
     },
     {
-      "brand": "Yakult",
-      "sku": "Yakult",
+      "brand": "YAKULT 28RS 65ML",
+      "sku": "YAKULT 28RS 65ML",
       "confidence": 0.36170676350593567
     },
     {
-      "brand": "Actimel",
-      "sku": "Actimel",
+      "brand": "ACITIMEL DRINK 25RS 100ML",
+      "sku": "ACITIMEL DRINK 25RS 100ML",
       "confidence": 1.0
     },
     {
-      "brand": "Milky Mist",
-      "sku": "Milky Mist Mozzarella",
+      "brand": "MILKY MIST PIZZA CHEESE 120RS 200G",
+      "sku": "MILKY MIST PIZZA CHEESE 120RS 200G",
       "confidence": 1.0
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "HERSHEY'S MILK SHAKE 40RS 200ML",
+      "sku": "HERSHEY'S MILK SHAKE 40RS 200ML",
       "confidence": 0.30704444646835327
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL ROYALE 30RS 200ML",
+      "sku": "AMUL ROYALE 30RS 200ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+      "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL ROYALE 30RS 200ML",
+      "sku": "AMUL ROYALE 30RS 200ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL PRO MILK 35RS 220ML",
+      "sku": "AMUL PRO MILK 35RS 220ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul Lite Butter",
+      "brand": "MILKY MIST BUTTER 55RS 100G",
+      "sku": "MILKY MIST BUTTER 55RS 100G",
       "confidence": 0.28899627923965454
     },
     {
-      "brand": "Nestle",
-      "sku": "Nestle A Dahi",
+      "brand": "NESTLE A DAHI 20RS 100G",
+      "sku": "NESTLE A DAHI 20RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+      "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul Lite Butter",
+      "brand": "AMUL CHEESE SPREAD 60RS 200G",
+      "sku": "AMUL CHEESE SPREAD 60RS 200G",
       "confidence": 0.3912980556488037
     },
     {
-      "brand": "Nestle",
-      "sku": "Nestle",
+      "brand": "NESTLE A DAHI 20RS 100G",
+      "sku": "NESTLE A DAHI 20RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Go Cheese Slices",
-      "sku": "Go Cheese Slices",
+      "brand": "AMUL PIZZA CHEESE 130RS 250G",
+      "sku": "AMUL PIZZA CHEESE 130RS 250G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul Cheese Spread",
+      "brand": "AMUL CHEESE SPREAD 60RS 200G",
+      "sku": "AMUL CHEESE SPREAD 60RS 200G",
       "confidence": 0.3789491653442383
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "BRITANIA CHEESE SLICES 60RS 220G",
+      "sku": "BRITANIA CHEESE SLICES 60RS 220G",
       "confidence": 1.0
     },
     {
-      "brand": "Go Cheese Slices",
-      "sku": "Go Cheese Slices",
+      "brand": "GO CHEESE SLICES 85RS 200G",
+      "sku": "GO CHEESE SLICES 85RS 200G",
       "confidence": 1.0
     },
     {
-      "brand": "Hershey's",
-      "sku": "Hershey's",
+      "brand": "EPIGAMIA MILK SKAKE 45RS 180ML",
+      "sku": "EPIGAMIA MILK SKAKE 45RS 180ML",
       "confidence": 0.23161908984184265
     },
     {
-      "brand": "Milky Mist",
-      "sku": "Milky Mist",
+      "brand": "AMUL CHEESE BLOCK 70RS 200G",
+      "sku": "AMUL CHEESE BLOCK 70RS 200G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul Cheese Spread",
+      "brand": "GAMAL GARLIC HERBS SPREAD 60RS 200G",
+      "sku": "GAMAL GARLIC HERBS SPREAD 60RS 200G",
       "confidence": 0.3703949451446533
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL LITE BUTTER 52RS 100G",
+      "sku": "AMUL LITE BUTTER 52RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL BUTTER 58RS 100G",
+      "sku": "AMUL BUTTER 58RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "AMUL BUTTER 58RS 100G",
+      "sku": "AMUL BUTTER 58RS 100G",
       "confidence": 1.0
     },
     {
-      "brand": "Milky Mist",
-      "sku": "Milky Mist Butter",
+      "brand": "AMUL CHEESE BLOCK 70RS 200G",
+      "sku": "AMUL CHEESE BLOCK 70RS 200G",
       "confidence": 0.37570226192474365
     },
     {
-      "brand": "Amul",
-      "sku": "Amul",
+      "brand": "BRITANIA CHEESE SLICES 60RS 220G",
+      "sku": "BRITANIA CHEESE SLICES 60RS 220G",
       "confidence": 1.0
     },
     {
-      "brand": "Nestle",
-      "sku": "Nestle A Dahi",
+      "brand": "AMUL TAAZA TONED MILK 62RS IL",
+      "sku": "AMUL TAAZA TONED MILK 62RS IL",
       "confidence": 0.26203370094299316
     },
     {
-      "brand": "Nestle",
-      "sku": "Nestle A Dahi",
+      "brand": "NESTLE A YOGHURT 25RS 50G",
+      "sku": "NESTLE A YOGHURT 25RS 50G",
       "confidence": 0.2898770272731781
     },
     {
-      "brand": "Activia",
-      "sku": "Activia",
+      "brand": "ACTIVIA 30RS 100G",
+      "sku": "ACTIVIA 30RS 100G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "ACTIVIA 30RS 100G",
+      "sku": "ACTIVIA 30RS 100G",
       "confidence": 1.0
     }
   ],
@@ -394,6 +432,7 @@
     "95",
     "ACTIVIA",
     "Aat",
+    "AcTiviA",
     "Acnail",
     "Actimel",
     "Actirel",

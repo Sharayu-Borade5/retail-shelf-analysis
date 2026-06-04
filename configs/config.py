@@ -18,7 +18,7 @@ DETECTION_CLASSES = [
     "milk bottle", "juice carton",
     "product box", "biscuit box", "cookie box", "snack box", "package box"
 ]
-DETECTION_CONF  = 0.12
+DETECTION_CONF  = 0.10
 DETECTION_IOU   = 0.45
 MIN_BBOX_AREA   = 2000     # px²  — filters logo / shelf-label detections
 
@@ -78,6 +78,8 @@ BRAND_DICTIONARY: dict[str, str] = {
     "bingo": "Bingo",
     "mad angles": "Bingo",
     "achaari": "Bingo",
+    "achaari masti": "Bingo",
+    "achaarimasti": "Bingo",
     
     # ── Pringles ───────────────────────────────────────────────────────────
     "pringles": "Pringles",

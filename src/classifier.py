@@ -45,6 +45,7 @@ def match_ocr_to_brand(
 ) -> Optional[str]:
     """Helper to match OCR text detected on crops to a SKU using rapidfuzz fuzz.ratio on cleaned strings.
     Only considers OCR candidates with confidence > 0.65 (Fix 4).
+    Evaluates all OCR pairs and returns the overall highest scoring match.
     """
     from configs.config import SKU_TO_PARENT_BRAND
     
@@ -62,6 +63,10 @@ def match_ocr_to_brand(
     # Map cleaned choices to original keys
     cleaned_choices = {clean_str(k): k for k in active_brand_dict.keys()}
     
+    best_overall_score = 0.0
+    best_overall_ocr_conf = 0.0
+    best_overall_key = None
+    
     for text, conf in ocr_pairs:
         if conf <= 0.65:
             continue
@@ -70,17 +75,17 @@ def match_ocr_to_brand(
             continue
             
         # Match using fuzz.ratio scorer
-        best_key = None
-        best_score = 0.0
         for cleaned_choice in cleaned_choices.keys():
             score = fuzz.ratio(cleaned_query, cleaned_choice)
-            if score > best_score:
-                best_score = score
-                best_key = cleaned_choices[cleaned_choice]
+            # Find the highest fuzzy score. Tie-break using OCR confidence.
+            if score > best_overall_score or (abs(score - best_overall_score) < 1e-5 and conf > best_overall_ocr_conf):
+                best_overall_score = score
+                best_overall_ocr_conf = conf
+                best_overall_key = cleaned_choices[cleaned_choice]
                 
-        if best_score > 75.0:
-            return active_brand_dict[best_key]
-            
+    if best_overall_score > 75.0 and best_overall_key is not None:
+        return active_brand_dict[best_overall_key]
+        
     return None
 
 

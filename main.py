@@ -140,6 +140,15 @@ class RetailShelfPipeline:
         logger.info("Image size: %dx%d", image.shape[1], image.shape[0])
 
         # ── Step 1: Product Detection ──────────────────────────────────────
+        # Dynamically set NMS parameters depending on shelf context
+        name_lower = name.lower()
+        if "snack" in name_lower or "snacks" in name_lower:
+            self.detector.nms_iou_merge = 0.60
+            self.detector.nms_contain_thresh = 0.60
+        else:
+            self.detector.nms_iou_merge = NMS_IOU_MERGE
+            self.detector.nms_contain_thresh = NMS_CONTAIN_THRESH
+
         detections = self.detector.detect(image, DETECTION_CLASSES)
         logger.info("→ %d product regions detected", len(detections))
 

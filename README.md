@@ -210,14 +210,65 @@ For real-time multi-camera analytics, GPU is recommended.
 
 ---
 
-## Future Improvements
+## 🚀 Production Pipeline Redesign (Architectural Critique)
 
-| Enhancement | Impact |
-|-------------|--------|
-| Fine-tuned detector on retail data | +15–25% detection recall |
-| Planogram compliance check | True OSA, out-of-stock detection |
-| SAM2 instance segmentation | Pixel-precise SOS calculation |
-| Product SKU recognition | SKU-level inventory tracking |
-| Tracking across store visits | Trend analysis, replenishment alerts |
-| Hindi / regional OCR | Better coverage of Indian price tags |
-| Grounding DINO (when GPU available) | Phrase-grounded detection |
+While the zero-shot prototype provides a fast, training-free baseline, deploying a retail-shelf intelligence system at scale requires addressing several fundamental limitations. Below is an architectural critique and a blueprint for a production-grade pipeline.
+
+### Proposed Production Architecture
+
+```mermaid
+flowchart TD
+    A[Input Image] --> B[Fine-Tuned YOLOv11-seg]
+    B --> C[Product Masks & Crops]
+    B --> D[Shelf Rows & Space Bands]
+    C --> E[DINOv2 Feature Extractor]
+    E --> F[FAISS Reference Gallery\nTop-K SKU Candidates]
+    C --> G[Crop OCR\nProduct Packaging Text]
+    A --> H[Shelf Label & Price Tag OCR]
+    G --> I[Bayesian Evidence Fusion\nScore = w_vis * Vis + w_ocr * OCR + w_ctx * Context]
+    F --> I
+    H --> I
+    D --> I
+    I --> J[Final SKU Predictions]
+    J --> K[Shelf Analytics\nSOS + OSA + Planogram Alignment]
+```
+
+---
+
+### Key Redesign Components
+
+#### 1. Zero-Shot Detection vs. Fine-tuned Instance Segmentation
+* **Prototype Issue:** YOLO-World/Grounding DINO relies on zero-shot class descriptions (`"bottle"`, `"snack packet"`). Because the detector has never seen the actual products, it struggles with retail-shelf boundaries, causing adjacent bags to merge into a single detection, or logos and price tags to trigger false detections.
+* **Production Redesign:** Fine-tune a custom instance segmentation model (e.g., **YOLOv11-seg** or **RT-DETR**) on the provided COCO brand dataset (`Brand Detection.coco.zip`).
+* **Impact:** Fine-tuning teaches the model exact packing contours and aspect ratios. Pixel-precise instance masks replace axis-aligned bounding boxes, yielding highly accurate Share of Shelf (SOS) calculations and preventing double-counting on overlapping items.
+
+#### 2. Deterministic "OCR-First" Mappings vs. Bayesian Evidence Fusion
+* **Prototype Issue:** Mappings are dictated by an OCR-first dictionary look-up. If the word `"masala"` is read, the system immediately maps the crop to `"Lay's Magic Masala"`. If the product is actually a competitor pack (e.g., *Kurkure Masala* or *Bingo Masala*), the visual classifier is bypassed, leaking incorrect brand metrics.
+* **Production Redesign:** Replace the hard-override logic with a **Bayesian Evidence Fusion** scoring function:
+  $$\text{Score}(Brand) = w_{\text{visual}} \cdot P(Brand \mid \text{Visual}) + w_{\text{ocr}} \cdot P(Brand \mid \text{OCR}) + w_{\text{context}} \cdot P(Brand \mid \text{Context})$$
+* **Impact:** OCR results contribute as probabilistic evidence instead of absolute truth. If the visual similarity for *Kurkure* is $0.90$ and the OCR extracts the token `"masala"`, the system correctly labels the product *Kurkure Masala* instead of overriding it to *Lay's*.
+
+#### 3. General CLIP Classifier vs. Custom SKU metric learning
+* **Prototype Issue:** General-purpose vision-language models like OpenCLIP ViT-B/32 are trained on generic internet imagery. They easily recognize broad concepts but cannot distinguish between visually similar SKUs under the same parent brand (e.g., *Amul Gold* vs. *Amul Taaza* vs. *Amul Shakti* milk packets).
+* **Production Redesign:** Replace CLIP with a metric learning backbone (e.g., ConvNeXt or Vision Transformer) fine-tuned on the brand dataset using ArcFace or Triplet Loss to map product crops into a tight, highly-discriminative SKU embedding space.
+
+#### 4. IoU-Based NMS vs. Embedding-Based Duplicate Suppression
+* **Prototype Issue:** Setting fixed IoU thresholds is a trade-off: a lower threshold (e.g., `0.38` for beverages) merges valid adjacent bottles, while a higher threshold (e.g., `0.60` for snacks) fails to suppress overlapping double-detections of the same pack.
+* **Production Redesign:** Extract feature embeddings for overlapping bounding boxes using a foundation model like **DINOv2**. Overlapping regions with high cosine similarity ($\ge 0.90$) are automatically collapsed into a single facing. This prevents double-counting without merging adjacent distinct products.
+
+#### 5. Strip-Only OCR vs. Multi-Zone Text Fusion
+* **Prototype Issue:** OCR is restricted to localized shelf separator strips. Text printed on the actual product packaging is completely ignored.
+* **Production Redesign:** Run text extraction across three distinct zones:
+  1. **Product Face Crop:** To identify variant text (e.g., `"Classic"`, `"Spicy Treat"`, `"Sugar Free"`).
+  2. **Direct Shelf Label:** Located immediately beneath the product to extract barcodes and POS descriptions.
+  3. **Adjacent Price Tags:** To read promotions and pricing details.
+* **Impact:** All extracted text tokens are compiled and passed to the fusion engine, improving resolution of ambiguous packaging variants.
+
+#### 6. Missing Visual Retrieval (DINOv2 + FAISS)
+* **Prototype Issue:** Whenever a brand updates its packaging graphic or introduces a new SKU, standard supervised classifiers must be retrained.
+* **Production Redesign:** Build a visual search engine:
+  * Extract features from detected product crops using a frozen **DINOv2-ViT-B** or **DINOv2-ViT-L** backbone.
+  * Index a reference gallery of standard SKU packaging photos in a **FAISS** vector database.
+  * Use k-Nearest Neighbors (k-NN) search to retrieve the closest matching SKU in the reference gallery.
+* **Impact:** Onboarding new products or seasonal packaging designs requires simply dropping a reference photo into the gallery directory—requiring **zero model retraining**.
+

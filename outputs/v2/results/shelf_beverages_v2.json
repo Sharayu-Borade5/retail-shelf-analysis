@@ -1,0 +1,25 @@
+{
+  "image_name": "shelf_beverages.jpg",
+  "image_size": {
+    "width": 1448,
+    "height": 1086
+  },
+  "shelf_type": "beverages",
+  "product_count": 0,
+  "brand_count": 0,
+  "brands": {},
+  "shelf_share_pct": {},
+  "shelf_occupancy_pct": 0.0,
+  "shelf_rows": 0,
+  "out_of_stock_zones": [
+    {
+      "x_start": 0,
+      "x_end": 1448,
+      "width_px": 1448,
+      "width_pct": 100.0
+    }
+  ],
+  "ocr_price_tags": [],
+  "inference_ms": 0.0,
+  "detections": []
+}

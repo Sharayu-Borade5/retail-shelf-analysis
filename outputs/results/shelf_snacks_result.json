@@ -1,275 +1,276 @@
 {
   "image_name": "shelf_snacks.jpg",
-  "total_products": 37,
+  "total_products": 36,
   "brands": {
-    "Lay's": 7,
-    "Pringles": 4,
-    "Good Day": 4,
-    "Bingo": 3,
-    "Doritos": 3,
-    "Uncle Chips": 2,
-    "Tiger Krunch": 2,
-    "Cheetos": 2,
-    "Parle-G": 2,
-    "Hide & Seek Fab": 1,
-    "Kurkure": 1,
-    "Marie Gold": 1,
-    "Malkist": 1,
-    "Hide & Seek Milano": 1,
-    "Dark Fantasy": 1,
-    "Monaco": 1,
-    "Oreo": 1
+    "DORITOS 28RS 44G": 5,
+    "PRINGLES 99RS 107G": 4,
+    "GOOD DAY 20RS 81G": 3,
+    "LAY'S 20RS 52.2G": 3,
+    "KURKURE 20RS 60G": 3,
+    "UNCLE CHIPS 20RS 60G": 2,
+    "MALKIST 10RS 65G": 2,
+    "TIGER KRUNCH 10RS 60G": 2,
+    "PARLE-G 10RS 80G": 2,
+    "BINGO 20RS 52G": 2,
+    "OREO 20RS 120G": 2,
+    "HIDE & SEEK FAB 20RS 112G": 1,
+    "MARIE GOLD 20RS 120G": 1,
+    "HIDE & SEEK MELANO 30RS 75G": 1,
+    "CHEETOS 20RS 35G": 1,
+    "DARK FANTASY 30RS 75G": 1,
+    "MONACO 10RS 6.5G": 1
   },
   "brand_counts": {
-    "Lay's": 7,
-    "Pringles": 4,
-    "Good Day": 4,
-    "Bingo": 3,
-    "Doritos": 3,
-    "Uncle Chips": 2,
-    "Tiger Krunch": 2,
-    "Cheetos": 2,
-    "Parle-G": 2,
-    "Hide & Seek Fab": 1,
-    "Kurkure": 1,
-    "Marie Gold": 1,
-    "Malkist": 1,
-    "Hide & Seek Milano": 1,
-    "Dark Fantasy": 1,
-    "Monaco": 1,
-    "Oreo": 1
+    "DORITOS 28RS 44G": 5,
+    "PRINGLES 99RS 107G": 4,
+    "GOOD DAY 20RS 81G": 3,
+    "LAY'S 20RS 52.2G": 3,
+    "KURKURE 20RS 60G": 3,
+    "UNCLE CHIPS 20RS 60G": 2,
+    "MALKIST 10RS 65G": 2,
+    "TIGER KRUNCH 10RS 60G": 2,
+    "PARLE-G 10RS 80G": 2,
+    "BINGO 20RS 52G": 2,
+    "OREO 20RS 120G": 2,
+    "HIDE & SEEK FAB 20RS 112G": 1,
+    "MARIE GOLD 20RS 120G": 1,
+    "HIDE & SEEK MELANO 30RS 75G": 1,
+    "CHEETOS 20RS 35G": 1,
+    "DARK FANTASY 30RS 75G": 1,
+    "MONACO 10RS 6.5G": 1
   },
   "share_of_shelf": {
-    "Lay's": 19.37,
-    "Britannia": 18.22,
-    "Parle": 14.73,
-    "Doritos": 10.96,
-    "Cheetos": 7.38,
-    "Pringles": 6.93,
-    "Bingo": 6.39,
-    "Uncle Chipps": 5.67,
-    "Oreo": 3.15,
-    "Dark Fantasy": 3.06,
-    "Malkist": 2.63,
-    "Kurkure": 1.51
+    "DORITOS 28RS 44G": 15.99,
+    "KURKURE 20RS 60G": 9.37,
+    "LAY'S 20RS 52.2G": 9.28,
+    "PRINGLES 99RS 107G": 8.57,
+    "UNCLE CHIPS 20RS 60G": 6.56,
+    "GOOD DAY 20RS 81G": 6.54,
+    "BINGO 20RS 52G": 5.54,
+    "OREO 20RS 120G": 5.49,
+    "TIGER KRUNCH 10RS 60G": 5.34,
+    "MALKIST 10RS 65G": 4.83,
+    "PARLE-G 10RS 80G": 4.22,
+    "CHEETOS 20RS 35G": 3.5,
+    "HIDE & SEEK MELANO 30RS 75G": 3.41,
+    "MARIE GOLD 20RS 120G": 3.07,
+    "MONACO 10RS 6.5G": 2.79,
+    "HIDE & SEEK FAB 20RS 112G": 2.76,
+    "DARK FANTASY 30RS 75G": 2.74
   },
   "ocr_price_tags": [
     "₹10",
     "₹20",
     "₹28",
-    "₹30"
+    "₹30",
+    "₹99"
   ],
   "products": [
     {
-      "brand": "Pringles",
-      "sku": "Pringles",
+      "brand": "PRINGLES 99RS 107G",
+      "sku": "PRINGLES 99RS 107G",
       "confidence": 0.28384634852409363
     },
     {
-      "brand": "Parle",
-      "sku": "Hide & Seek Fab",
+      "brand": "HIDE & SEEK FAB 20RS 112G",
+      "sku": "HIDE & SEEK FAB 20RS 112G",
       "confidence": 1.0
     },
     {
-      "brand": "Britannia",
-      "sku": "Good Day",
-      "confidence": 0.4104691445827484
+      "brand": "GOOD DAY 20RS 81G",
+      "sku": "GOOD DAY 20RS 81G",
+      "confidence": 0.4104692041873932
     },
     {
-      "brand": "Pringles",
-      "sku": "Pringles",
-      "confidence": 0.3608834147453308
+      "brand": "PRINGLES 99RS 107G",
+      "sku": "PRINGLES 99RS 107G",
+      "confidence": 0.360883504152298
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's",
+      "brand": "LAY'S 20RS 52.2G",
+      "sku": "LAY'S 20RS 52.2G",
       "confidence": 1.0
     },
     {
-      "brand": "Bingo",
-      "sku": "Bingo",
-      "confidence": 0.3040305972099304
+      "brand": "UNCLE CHIPS 20RS 60G",
+      "sku": "UNCLE CHIPS 20RS 60G",
+      "confidence": 0.39502018690109253
     },
     {
-      "brand": "Uncle Chipps",
-      "sku": "Uncle Chipps",
-      "confidence": 0.3950202763080597
+      "brand": "PRINGLES 99RS 107G",
+      "sku": "PRINGLES 99RS 107G",
+      "confidence": 0.33239105343818665
     },
     {
-      "brand": "Pringles",
-      "sku": "Pringles",
-      "confidence": 0.33239099383354187
-    },
-    {
-      "brand": "Bingo",
-      "sku": "Bingo",
-      "confidence": 0.27274954319000244
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Good Day",
-      "confidence": 0.29523342847824097
-    },
-    {
-      "brand": "Kurkure",
-      "sku": "Kurkure",
-      "confidence": 0.3027469515800476
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Marie Gold",
+      "brand": "MARIE GOLD 20RS 120G",
+      "sku": "MARIE GOLD 20RS 120G",
       "confidence": 1.0
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's",
+      "brand": "LAY'S 20RS 52.2G",
+      "sku": "LAY'S 20RS 52.2G",
       "confidence": 1.0
     },
     {
-      "brand": "Malkist",
-      "sku": "Malkist",
+      "brand": "MALKIST 10RS 65G",
+      "sku": "MALKIST 10RS 65G",
       "confidence": 1.0
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's Chile Limon",
-      "confidence": 0.32523876428604126
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Tiger Krunch",
+      "brand": "KURKURE 20RS 60G",
+      "sku": "KURKURE 20RS 60G",
       "confidence": 1.0
     },
     {
-      "brand": "Parle",
-      "sku": "Hide & Seek Milano",
+      "brand": "UNCLE CHIPS 20RS 60G",
+      "sku": "UNCLE CHIPS 20RS 60G",
       "confidence": 1.0
     },
     {
-      "brand": "Cheetos",
-      "sku": "Cheetos",
-      "confidence": 0.34455904364585876
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Tiger Krunch",
+      "brand": "KURKURE 20RS 60G",
+      "sku": "KURKURE 20RS 60G",
       "confidence": 1.0
     },
     {
-      "brand": "Doritos",
-      "sku": "Doritos",
+      "brand": "TIGER KRUNCH 10RS 60G",
+      "sku": "TIGER KRUNCH 10RS 60G",
       "confidence": 1.0
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's Magic Masala",
+      "brand": "HIDE & SEEK MELANO 30RS 75G",
+      "sku": "HIDE & SEEK MELANO 30RS 75G",
       "confidence": 1.0
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's Tomato Tango",
+      "brand": "DORITOS 28RS 44G",
+      "sku": "DORITOS 28RS 44G",
+      "confidence": 0.3445590138435364
+    },
+    {
+      "brand": "TIGER KRUNCH 10RS 60G",
+      "sku": "TIGER KRUNCH 10RS 60G",
       "confidence": 1.0
     },
     {
-      "brand": "Parle",
-      "sku": "Parle-G",
+      "brand": "DORITOS 28RS 44G",
+      "sku": "DORITOS 28RS 44G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "KURKURE 20RS 60G",
+      "sku": "KURKURE 20RS 60G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "MALKIST 10RS 65G",
+      "sku": "MALKIST 10RS 65G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "DORITOS 28RS 44G",
+      "sku": "DORITOS 28RS 44G",
+      "confidence": 1.0
+    },
+    {
+      "brand": "PARLE-G 10RS 80G",
+      "sku": "PARLE-G 10RS 80G",
       "confidence": 0.36053529381752014
     },
     {
-      "brand": "Cheetos",
-      "sku": "Cheetos",
-      "confidence": 0.35050076246261597
+      "brand": "CHEETOS 20RS 35G",
+      "sku": "CHEETOS 20RS 35G",
+      "confidence": 0.35050085186958313
     },
     {
-      "brand": "Parle",
-      "sku": "Parle-G",
+      "brand": "PARLE-G 10RS 80G",
+      "sku": "PARLE-G 10RS 80G",
       "confidence": 1.0
     },
     {
-      "brand": "Dark Fantasy",
-      "sku": "Dark Fantasy",
-      "confidence": 0.3383612036705017
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Good Day",
-      "confidence": 0.3900718092918396
-    },
-    {
-      "brand": "Britannia",
-      "sku": "Good Day",
-      "confidence": 0.35942912101745605
-    },
-    {
-      "brand": "Lay's",
-      "sku": "Lay's Chile Limon",
+      "brand": "PRINGLES 99RS 107G",
+      "sku": "PRINGLES 99RS 107G",
       "confidence": 1.0
     },
     {
-      "brand": "Doritos",
-      "sku": "Doritos",
+      "brand": "DARK FANTASY 30RS 75G",
+      "sku": "DARK FANTASY 30RS 75G",
+      "confidence": 0.3383612632751465
+    },
+    {
+      "brand": "BINGO 20RS 52G",
+      "sku": "BINGO 20RS 52G",
+      "confidence": 0.3663645088672638
+    },
+    {
+      "brand": "GOOD DAY 20RS 81G",
+      "sku": "GOOD DAY 20RS 81G",
+      "confidence": 0.39007192850112915
+    },
+    {
+      "brand": "GOOD DAY 20RS 81G",
+      "sku": "GOOD DAY 20RS 81G",
+      "confidence": 0.3594290614128113
+    },
+    {
+      "brand": "LAY'S 20RS 52.2G",
+      "sku": "LAY'S 20RS 52.2G",
       "confidence": 1.0
     },
     {
-      "brand": "Doritos",
-      "sku": "Doritos",
-      "confidence": 0.34389060735702515
-    },
-    {
-      "brand": "Parle",
-      "sku": "Monaco",
+      "brand": "DORITOS 28RS 44G",
+      "sku": "DORITOS 28RS 44G",
       "confidence": 1.0
     },
     {
-      "brand": "Bingo",
-      "sku": "Bingo",
-      "confidence": 0.36567434668540955
+      "brand": "DORITOS 28RS 44G",
+      "sku": "DORITOS 28RS 44G",
+      "confidence": 0.34389054775238037
     },
     {
-      "brand": "Lay's",
-      "sku": "Lay's Magic Masala",
-      "confidence": 0.30573004484176636
+      "brand": "MONACO 10RS 6.5G",
+      "sku": "MONACO 10RS 6.5G",
+      "confidence": 1.0
     },
     {
-      "brand": "Oreo",
-      "sku": "Oreo",
+      "brand": "BINGO 20RS 52G",
+      "sku": "BINGO 20RS 52G",
+      "confidence": 0.36567431688308716
+    },
+    {
+      "brand": "OREO 20RS 120G",
+      "sku": "OREO 20RS 120G",
       "confidence": 0.3142714202404022
     },
     {
-      "brand": "Uncle Chipps",
-      "sku": "Uncle Chipps",
+      "brand": "OREO 20RS 120G",
+      "sku": "OREO 20RS 120G",
       "confidence": 1.0
-    },
-    {
-      "brand": "Pringles",
-      "sku": "Pringles",
-      "confidence": 0.24442416429519653
     }
   ],
   "product_text": [
     "\"957 _",
     "(Ceeta",
-    "(Undlle",
     "([ays)",
     "(eetes",
     "(lays)",
     "10%",
     "11%",
+    "20% EXTRA",
     "35% EXTRA",
-    "3J /0 EAIIA",
     "40",
     "40% EXTRA",
     "42536",
     "5J",
     "759",
     "9",
+    "@BINGo?",
     "@botdmedapcto",
     "@ointird",
     "@owc",
-    "Ache",
-    "B",
+    "Achanri",
     "B10",
     "BINGoI",
+    "BNGo",
     "CHIPS \"",
     "CHIPS\"",
     "Caiet",
@@ -280,7 +281,9 @@
     "Choco Fills",
     "Chocolate",
     "Classic",
+    "Cnoco",
     "Cojmu",
+    "Cream",
     "Danta",
     "Day",
     "Day;",
@@ -306,21 +309,26 @@
     "Juo,fionm",
     "KRUNCH",
     "KRUNCK",
+    "Kurkure",
     "Lidd",
     "Limon",
     "Lunang",
-    "MD",
+    "MDANGES |",
     "MILANO",
     "MORE",
     "Malkist)",
     "Masola",
+    "Masti",
     "Monaco",
     "MorE",
     "More",
     "Mosolo",
     "NSt",
     "OINadicuu (",
+    "OREO",
+    "Oae",
     "Oant",
+    "Onion",
     "OrEO",
     "OrIginal",
     "Original",
@@ -334,7 +342,7 @@
     "Pricles '",
     "RANCH",
     "Spanish",
-    "Spicy Tread",
+    "Spicy Treed",
     "Style",
     "TEXADDE",
     "TiGER",
@@ -349,9 +357,11 @@
     "checy?",
     "chilLv",
     "chips'",
+    "choco",
     "chocolate chip",
     "collECTiONS",
     "cooL",
+    "crdmo",
     "cusic",
     "eufe",
     "mafie",
@@ -359,9 +369,9 @@
     "odcintl",
     "peud)",
     "swout",
-    "uam eettetnalett",
     "zi0",
     "{SEEK\"",
+    "{Undle",
     "{pmuabitt",
     "~en"
   ],
@@ -370,8 +380,9 @@
     "28",
     "LArs",
     "CHEETOS",
-    "KURKURE",
-    "PRingles",
+    "99",
+    "UNCLE ChiPPS",
+    "BINGO",
     "10",
     "Mahie GOLD",
     "OREO",

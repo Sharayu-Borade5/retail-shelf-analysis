@@ -1,0 +1,25 @@
+{
+  "image_name": "shelf_dairy.jpg",
+  "image_size": {
+    "width": 1402,
+    "height": 1122
+  },
+  "shelf_type": "dairy",
+  "product_count": 0,
+  "brand_count": 0,
+  "brands": {},
+  "shelf_share_pct": {},
+  "shelf_occupancy_pct": 0.0,
+  "shelf_rows": 0,
+  "out_of_stock_zones": [
+    {
+      "x_start": 0,
+      "x_end": 1402,
+      "width_px": 1402,
+      "width_pct": 100.0
+    }
+  ],
+  "ocr_price_tags": [],
+  "inference_ms": 0.0,
+  "detections": []
+}
